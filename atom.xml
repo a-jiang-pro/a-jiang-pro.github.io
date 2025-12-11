@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://yz0812.github.io</id>
+    <id>https://a-jiang-pro.github.io</id>
     <title>yz</title>
     <updated>2025-11-22T15:26:08.241Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://yz0812.github.io"/>
-    <link rel="self" href="https://yz0812.github.io/atom.xml"/>
+    <link rel="alternate" href="https://a-jiang-pro.github.io"/>
+    <link rel="self" href="https://a-jiang-pro.github.io/atom.xml"/>
     <subtitle>少年拥有了时间,时间带走了年少</subtitle>
-    <logo>https://yz0812.github.io/images/avatar.png</logo>
-    <icon>https://yz0812.github.io/favicon.ico</icon>
+    <logo>https://a-jiang-pro.github.io/images/avatar.png</logo>
+    <icon>https://a-jiang-pro.github.io/favicon.ico</icon>
     <rights>All rights reserved 2025, yz</rights>
     <entry>
         <title type="html"><![CDATA[节省C盘空间的方式——符号链接]]></title>
-        <id>https://yz0812.github.io/post/jie-sheng-c-pan-kong-jian-de-fang-shi-fu-hao-lian-jie/</id>
-        <link href="https://yz0812.github.io/post/jie-sheng-c-pan-kong-jian-de-fang-shi-fu-hao-lian-jie/">
+        <id>https://a-jiang-pro.github.io/post/jie-sheng-c-pan-kong-jian-de-fang-shi-fu-hao-lian-jie/</id>
+        <link href="https://a-jiang-pro.github.io/post/jie-sheng-c-pan-kong-jian-de-fang-shi-fu-hao-lian-jie/">
         </link>
         <updated>2025-05-23T16:11:49.000Z</updated>
         <content type="html"><![CDATA[<h1 id="节省c盘空间的方式符号链接">节省C盘空间的方式——符号链接</h1>
@@ -92,13 +92,13 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[一键安装 Zsh 增强环境]]></title>
-        <id>https://yz0812.github.io/post/yi-jian-an-zhuang-zsh-zeng-qiang-huan-jing/</id>
-        <link href="https://yz0812.github.io/post/yi-jian-an-zhuang-zsh-zeng-qiang-huan-jing/">
+        <id>https://a-jiang-pro.github.io/post/yi-jian-an-zhuang-zsh-zeng-qiang-huan-jing/</id>
+        <link href="https://a-jiang-pro.github.io/post/yi-jian-an-zhuang-zsh-zeng-qiang-huan-jing/">
         </link>
         <updated>2025-05-22T02:33:04.000Z</updated>
         <content type="html"><![CDATA[<h1 id="一键安装-zsh-增强环境">🚀 一键安装 Zsh 增强环境</h1>
 <p>使用以下命令快速安装 Zsh、Oh My Zsh 及常用增强插件：</p>
-<pre><code class="language-bash">bash &lt;(curl -sSL https://gitee.com/yz0812/script/raw/master/install_zsh_enhancements.sh)
+<pre><code class="language-bash">bash &lt;(curl -sSL https://gitee.com/a-jiang-pro/script/raw/master/install_zsh_enhancements.sh)
 </code></pre>
 <h2 id="脚本自动安装内容">📦 脚本自动安装内容</h2>
 <ul>
@@ -210,7 +210,7 @@ dps   # docker ps
 <hr>
 <h2 id="️-项目来源">❤️ 项目来源</h2>
 <ul>
-<li>插件仓库镜像由 <a href="https://gitee.com/yz0812">@yz0812</a> 提供</li>
+<li>插件仓库镜像由 <a href="https://gitee.com/a-jiang-pro">@a-jiang-pro</a> 提供</li>
 <li>欢迎 Fork、修改或提交 PR</li>
 </ul>
 <hr>
@@ -218,8 +218,8 @@ dps   # docker ps
     </entry>
     <entry>
         <title type="html"><![CDATA[Rime 中州韻輸入法引擎 + 雾凇拼音]]></title>
-        <id>https://yz0812.github.io/post/rime-zhong-zhou-yun-shu-ru-fa-yin-qing-wu-song-pin-yin/</id>
-        <link href="https://yz0812.github.io/post/rime-zhong-zhou-yun-shu-ru-fa-yin-qing-wu-song-pin-yin/">
+        <id>https://a-jiang-pro.github.io/post/rime-zhong-zhou-yun-shu-ru-fa-yin-qing-wu-song-pin-yin/</id>
+        <link href="https://a-jiang-pro.github.io/post/rime-zhong-zhou-yun-shu-ru-fa-yin-qing-wu-song-pin-yin/">
         </link>
         <updated>2025-03-26T10:25:18.000Z</updated>
         <content type="html"><![CDATA[<h1 id="rime-中州韻輸入法引擎-雾凇拼音">Rime 中州韻輸入法引擎 + 雾凇拼音</h1>
@@ -362,8 +362,8 @@ import_tables:
     </entry>
     <entry>
         <title type="html"><![CDATA[目录结构树生成器 ]]></title>
-        <id>https://yz0812.github.io/post/mu-lu-jie-gou-shu-sheng-cheng-qi/</id>
-        <link href="https://yz0812.github.io/post/mu-lu-jie-gou-shu-sheng-cheng-qi/">
+        <id>https://a-jiang-pro.github.io/post/mu-lu-jie-gou-shu-sheng-cheng-qi/</id>
+        <link href="https://a-jiang-pro.github.io/post/mu-lu-jie-gou-shu-sheng-cheng-qi/">
         </link>
         <updated>2025-03-26T10:22:58.000Z</updated>
         <content type="html"><![CDATA[<h1 id="1-使用场景">1. 使用场景</h1>
@@ -371,7 +371,7 @@ import_tables:
 <img src="upload://l8uQU02oxfAaGVIHbP2ZgR2n9RL.png" alt="image|690x413" loading="lazy"></p>
 <h1 id="2访问地址">2.访问地址</h1>
 <p>访问地址 <a href="https://directory-structure.wuc0714.top/">https://directory-structure.wuc0714.top</a><br>
-git地址 <a href="https://github.com/yz0812/folders">yz0812/folders</a></p>
+git地址 <a href="https://github.com/a-jiang-pro/folders">a-jiang-pro/folders</a></p>
 <h1 id="3效果图">3.效果图</h1>
 <figure data-type="image" tabindex="1"><img src="upload://pMAq8PqltxnGoEC1C5YGtrJf5MK.png" alt="FireShot Capture 006 - 目录结构树生成器 - directory-structure.wuc0714.top|476x500" loading="lazy"></figure>
 <p><span style='color:red'> 欢迎大佬提PR</span></p>
@@ -384,8 +384,8 @@ git地址 <a href="https://github.com/yz0812/folders">yz0812/folders</a></p>
     </entry>
     <entry>
         <title type="html"><![CDATA[ Cursor Java项目开发环境配置指南]]></title>
-        <id>https://yz0812.github.io/post/cursor-java-xiang-mu-kai-fa-huan-jing-pei-zhi-zhi-nan/</id>
-        <link href="https://yz0812.github.io/post/cursor-java-xiang-mu-kai-fa-huan-jing-pei-zhi-zhi-nan/">
+        <id>https://a-jiang-pro.github.io/post/cursor-java-xiang-mu-kai-fa-huan-jing-pei-zhi-zhi-nan/</id>
+        <link href="https://a-jiang-pro.github.io/post/cursor-java-xiang-mu-kai-fa-huan-jing-pei-zhi-zhi-nan/">
         </link>
         <updated>2025-03-26T10:19:55.000Z</updated>
         <content type="html"><![CDATA[<h1 id="cursor-java项目开发环境配置指南">Cursor Java项目开发环境配置指南</h1>
@@ -658,8 +658,8 @@ git地址 <a href="https://github.com/yz0812/folders">yz0812/folders</a></p>
     </entry>
     <entry>
         <title type="html"><![CDATA[guava 常用工具类]]></title>
-        <id>https://yz0812.github.io/post/guava-chang-yong-gong-ju-lei/</id>
-        <link href="https://yz0812.github.io/post/guava-chang-yong-gong-ju-lei/">
+        <id>https://a-jiang-pro.github.io/post/guava-chang-yong-gong-ju-lei/</id>
+        <link href="https://a-jiang-pro.github.io/post/guava-chang-yong-gong-ju-lei/">
         </link>
         <updated>2024-08-01T17:38:23.000Z</updated>
         <content type="html"><![CDATA[<h2 id="字符处理">字符处理</h2>
@@ -960,8 +960,8 @@ public class ConverterExample {
     </entry>
     <entry>
         <title type="html"><![CDATA[JPA 小方法]]></title>
-        <id>https://yz0812.github.io/post/jpa-xiao-fang-fa/</id>
-        <link href="https://yz0812.github.io/post/jpa-xiao-fang-fa/">
+        <id>https://a-jiang-pro.github.io/post/jpa-xiao-fang-fa/</id>
+        <link href="https://a-jiang-pro.github.io/post/jpa-xiao-fang-fa/">
         </link>
         <updated>2024-04-25T16:41:02.000Z</updated>
         <content type="html"><![CDATA[<h2 id="1生命周期注解">1.生命周期注解</h2>
@@ -1564,8 +1564,8 @@ public class ElevatorSpecification&lt;T&gt; {
     </entry>
     <entry>
         <title type="html"><![CDATA[ oh-my-zsh 安装]]></title>
-        <id>https://yz0812.github.io/post/oh-my-zsh-an-zhuang/</id>
-        <link href="https://yz0812.github.io/post/oh-my-zsh-an-zhuang/">
+        <id>https://a-jiang-pro.github.io/post/oh-my-zsh-an-zhuang/</id>
+        <link href="https://a-jiang-pro.github.io/post/oh-my-zsh-an-zhuang/">
         </link>
         <updated>2023-09-19T20:52:17.000Z</updated>
         <content type="html"><![CDATA[<h2 id="oh-my-zsh-安装">oh-my-zsh 安装</h2>
@@ -1622,8 +1622,8 @@ source ~/.zshrc
     </entry>
     <entry>
         <title type="html"><![CDATA[ 经纬度计算距离]]></title>
-        <id>https://yz0812.github.io/post/jing-wei-du-ji-suan-ju-chi/</id>
-        <link href="https://yz0812.github.io/post/jing-wei-du-ji-suan-ju-chi/">
+        <id>https://a-jiang-pro.github.io/post/jing-wei-du-ji-suan-ju-chi/</id>
+        <link href="https://a-jiang-pro.github.io/post/jing-wei-du-ji-suan-ju-chi/">
         </link>
         <updated>2023-09-14T16:11:51.000Z</updated>
         <content type="html"><![CDATA[<h2 id="经纬度计算距离">经纬度计算距离</h2>

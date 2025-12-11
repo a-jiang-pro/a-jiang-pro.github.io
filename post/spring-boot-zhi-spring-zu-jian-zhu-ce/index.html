@@ -7,12 +7,12 @@
 <meta name="description" content="少年拥有了时间,时间带走了年少" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 
-<link type="text/css" rel="stylesheet" href="https://yz0812.github.io/styles/main.css" media="screen" />
+<link type="text/css" rel="stylesheet" href="https://a-jiang-pro.github.io/styles/main.css" media="screen" />
 <link type="text/css" rel="stylesheet" href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" />
 <link type="text/css" rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css" integrity="sha512-FwY1WVsm4UQgrOXt6kaQ53w83cOHa8fSvjFn/BvVOCYVPmkSR39k/xnU+8hht3zW6JL1TBd4C/aVQIAV58Cg6A==" crossorigin="anonymous" /> -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/atom-one-dark.min.css" integrity="sha512-Jlyabam8ztU2kOGN19fSzv1Go9nt9A43UA6vhmL1MPsQMeoPZd+p7pbmegAtyl8kulna0Cqwb7Pgj4adGTLCXA==" crossorigin="anonymous" />
-<script type="text/javascript" src="https://yz0812.github.io/media/scripts/jquery.js"></script>
+<script type="text/javascript" src="https://a-jiang-pro.github.io/media/scripts/jquery.js"></script>
 <!-- <script type="text/javascript" src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js" integrity="sha512-tHQeqtcNWlZtEh8As/4MmZ5qpy0wj04svWFK7MIzLmUVIzaHXS8eod9OmHxyBL1UET5Rchvw7Ih4ZDv5JojZww==" crossorigin="anonymous"></script>
 
@@ -47,8 +47,8 @@
 					<div class="navbar">
 
 						<div class="logo">
-							<a href="https://yz0812.github.io">
-								<img class="logo" src="https://yz0812.github.io/media/images/site_avatar.png?v=1763825088871"
+							<a href="https://a-jiang-pro.github.io">
+								<img class="logo" src="https://a-jiang-pro.github.io/media/images/site_avatar.png?v=1763825088871"
 									alt="">
 							</a>
 						</div>
@@ -121,7 +121,7 @@
                           <h1 class="layout-post-title">Spring Boot之 Spring组件注册</h1>
                           <div class="layout-post-meta">
                             <div class="item">
-                               <a href="https://yz0812.github.io/tag/Ksbd-vR2dH/" class="post--keyword"
+                               <a href="https://a-jiang-pro.github.io/tag/Ksbd-vR2dH/" class="post--keyword"
                                 data-title="spring" data-type="post_tag" data-term-id="39">spring</a>
                               
                             </div>
@@ -133,7 +133,7 @@
                         <div class="layout-post-content">
                           <div class="layout-post-item">
                             
-                            <p class="with-img"><img src="https://fastly.jsdelivr.net/gh/yz0812/mypic@master/img/44.jpg"
+                            <p class="with-img"><img src="https://fastly.jsdelivr.net/gh/a-jiang-pro/mypic@master/img/44.jpg"
                                 class="attachment-full size-full wp-post-image" alt="Spring Boot之 Spring组件注册" /></p>
                             
                             <h3 id="一-通过bean注册组件">一. 通过@Bean注册组件</h3>
@@ -242,7 +242,7 @@ public class User {
 }
 </code></pre>
 <p>运行可以看到</p>
-<figure data-type="image" tabindex="1"><img src="https://fastly.jsdelivr.net/gh/yz0812/mypic@master/20210818000515.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="https://fastly.jsdelivr.net/gh/a-jiang-pro/mypic@master/20210818000515.png" alt="" loading="lazy"></figure>
 <p>可见，组件已经成功被扫描进去了，并且名称默认为类名首字母小写。</p>
 <p>这里，配置类WebConfig也被扫描并注册了，查看<code>@Configuration</code>源码就会发现原因 <code>@Configuration</code>是个复合注解,用<code>@Component</code>修饰了</p>
 <pre><code class="language-java">@Target({ElementType.TYPE})
@@ -301,7 +301,7 @@ public class WebConfig {
 <li>根据指定类型类排除（<code>type = FilterType.ASSIGNABLE_TYPE</code>），排除类型为<code>User.class</code>，其子类，实现类都会被排除。</li>
 </ol>
 <p>启动项目，观察控制台：</p>
-<figure data-type="image" tabindex="2"><img src="https://fastly.jsdelivr.net/gh/yz0812/mypic@master/20210818001117.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://fastly.jsdelivr.net/gh/a-jiang-pro/mypic@master/20210818001117.png" alt="" loading="lazy"></figure>
 <p>可见排除成功。</p>
 <p>除了上面两种常用的规则外，我们还可以使用别的规则，查看<code>FilterType</code>源码：</p>
 <pre><code class="language-java">public enum FilterType {
@@ -356,7 +356,7 @@ public class WebConfig {
 </code></pre>
 <p>上面配置了只将<code>Service</code>纳入IOC容器，并且需要用<code>useDefaultFilters = false</code>来关闭Spring默认的扫描策略才能让我们的配置生效（Spring Boot入口类的<code>@SpringBootApplication</code>注解包含了一些默认的扫描策略）。</p>
 <p>启动项目，观察控制台：</p>
-<figure data-type="image" tabindex="3"><img src="https://fastly.jsdelivr.net/gh/yz0812/mypic@master/20210818001759.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="https://fastly.jsdelivr.net/gh/a-jiang-pro/mypic@master/20210818001759.png" alt="" loading="lazy"></figure>
 <p>可看到，IOC容器中将不再包含dao，controller。</p>
 <h4 id="自定义扫描策略">自定义扫描策略</h4>
 <p>自定义扫描策略需要我们实现<code>org.springframework.core.type.filter.TypeFilter</code>接口，创建<code>MyTypeFilter</code>实现该接口：</p>
@@ -400,7 +400,7 @@ public class WebConfig {
 }
 </code></pre>
 <p>启动项目，观察输出：</p>
-<figure data-type="image" tabindex="4"><img src="https://fastly.jsdelivr.net/gh/yz0812/mypic@master/20210818002537.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="4"><img src="https://fastly.jsdelivr.net/gh/a-jiang-pro/mypic@master/20210818002537.png" alt="" loading="lazy"></figure>
 <p>因为<code>User</code>，<code>UserMapper</code>，<code>UserService</code>和<code>UserController</code>等类的类名都包含<code>er</code>，所以它们都没有被纳入到IOC容器中。</p>
 <h3 id="三组件作用域scope">三.组件作用域@Scope</h3>
 <p>Pom.xml 删除依赖</p>
@@ -616,7 +616,7 @@ public class WebConfig {
 }
 </code></pre>
 <p>启动项目，控制台输出:</p>
-<figure data-type="image" tabindex="5"><img src="https://fastly.jsdelivr.net/gh/yz0812/mypic@master/20210818005359.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="5"><img src="https://fastly.jsdelivr.net/gh/a-jiang-pro/mypic@master/20210818005359.png" alt="" loading="lazy"></figure>
 <p>可看到，通过<code>@Import</code>我们可以快速地往IOC容器中添加组件，Id默认为全类名。</p>
 <h4 id="importselector">ImportSelector</h4>
 <p>通过<code>@Import</code>我们已经实现了组件的导入，如果需要一次性导入较多组件，我们可以使用<code>ImportSelector</code>来实现。</p>
@@ -668,7 +668,7 @@ public class DemoApplication {
 }
 </code></pre>
 <p>启动项目，观察控制台：</p>
-<figure data-type="image" tabindex="6"><img src="https://fastly.jsdelivr.net/gh/yz0812/mypic@master/20210818010039.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="6"><img src="https://fastly.jsdelivr.net/gh/a-jiang-pro/mypic@master/20210818010039.png" alt="" loading="lazy"></figure>
 <p>组件已经成功导入。</p>
 <h4 id="importbeandefinitionregistrar">ImportBeanDefinitionRegistrar</h4>
 <p>除了上面两种往IOC容器导入组件的方法外，我们还可以使用<code>ImportBeanDefinitionRegistrar</code>来手动往IOC容器导入组件。</p>
@@ -742,7 +742,7 @@ public class DemoApplication {
 }
 </code></pre>
 <p>启动项目，观察控制台：</p>
-<figure data-type="image" tabindex="7"><img src="https://fastly.jsdelivr.net/gh/yz0812/mypic@master/20210818010628.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="7"><img src="https://fastly.jsdelivr.net/gh/a-jiang-pro/mypic@master/20210818010628.png" alt="" loading="lazy"></figure>
 <p>组件已经注册成功。</p>
 <h3 id="七-使用factorybean注册组件">七. 使用FactoryBean注册组件</h3>
 <p>Spring还提供了一个<code>FactoryBean</code>接口，我们可以通过实现该接口来注册组件，该接口包含了两个抽象方法和一个默认方法：</p>
@@ -808,7 +808,7 @@ public class DemoApplication {
 }
 </code></pre>
 <p>启动项目，观察控制台输出：</p>
-<figure data-type="image" tabindex="8"><img src="https://fastly.jsdelivr.net/gh/yz0812/mypic@master/20210818011024.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="8"><img src="https://fastly.jsdelivr.net/gh/a-jiang-pro/mypic@master/20210818011024.png" alt="" loading="lazy"></figure>
 <p>可看到，虽然我们获取的是Id为<code>cherryFactoryBean</code>的组件，但其获取到的实际是<code>getObject</code>方法里返回的对象。</p>
 <p>如果我们要获取<code>cherryFactoryBean</code>本身，则可以这样做：</p>
 <pre><code class="language-java">@SpringBootApplication
@@ -824,7 +824,7 @@ public class DemoApplication {
 </code></pre>
 <p>输出: <code>class com.example.demo.config.CherryFactoryBean</code></p>
 <p>为什么加上<code>&amp;</code>前缀就可以获取到相应的工厂类了呢，查看<code>BeanFactory</code>的源码会发现原因:</p>
-<figure data-type="image" tabindex="9"><img src="https://fastly.jsdelivr.net/gh/yz0812/mypic@master/20210818011348.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="9"><img src="https://fastly.jsdelivr.net/gh/a-jiang-pro/mypic@master/20210818011348.png" alt="" loading="lazy"></figure>
 
                           </div>
                         </div>
@@ -846,7 +846,7 @@ public class DemoApplication {
                               <div class="card-content col-8 col-md-9">
                                 <div class="card-body">
                                   <div class="header">
-                                    <a href="https://yz0812.github.io/post/spring-boot-zhi-spring-zu-jian-zhuang-pei/" class="title">
+                                    <a href="https://a-jiang-pro.github.io/post/spring-boot-zhi-spring-zu-jian-zhuang-pei/" class="title">
                                       <h4>Spring Boot之 Spring组件装配</h4>
                                     </a>
                                   </div>
@@ -863,8 +863,8 @@ public class DemoApplication {
                               </div>
                               <div class="card-thumb col-4 col-md-3">
                                 <div class="thumb">
-                                  <a href="https://yz0812.github.io/post/spring-boot-zhi-spring-zu-jian-zhuang-pei/"
-                                    style="background-image: url('https://fastly.jsdelivr.net/gh/yz0812/mypic@master/img/41.jpg');"></a>
+                                  <a href="https://a-jiang-pro.github.io/post/spring-boot-zhi-spring-zu-jian-zhuang-pei/"
+                                    style="background-image: url('https://fastly.jsdelivr.net/gh/a-jiang-pro/mypic@master/img/41.jpg');"></a>
                                 </div>
                               </div>
                               
@@ -875,7 +875,7 @@ public class DemoApplication {
                               <div class="card-content col-8 col-md-9">
                                 <div class="card-body">
                                   <div class="header">
-                                    <a href="https://yz0812.github.io/post/stream-api/" class="title">
+                                    <a href="https://a-jiang-pro.github.io/post/stream-api/" class="title">
                                       <h4>Stream API</h4>
                                     </a>
                                   </div>
@@ -892,8 +892,8 @@ public class DemoApplication {
                               </div>
                               <div class="card-thumb col-4 col-md-3">
                                 <div class="thumb">
-                                  <a href="https://yz0812.github.io/post/stream-api/"
-                                    style="background-image: url('https://fastly.jsdelivr.net/gh/yz0812/mypic@master/img/39.jpg');"></a>
+                                  <a href="https://a-jiang-pro.github.io/post/stream-api/"
+                                    style="background-image: url('https://fastly.jsdelivr.net/gh/a-jiang-pro/mypic@master/img/39.jpg');"></a>
                                 </div>
                               </div>
                               
@@ -972,7 +972,7 @@ public class DemoApplication {
 								<div class="footer-copy">
 									
 									<span>© 2018-05-01 </span>
-									<a href="https://yz0812.github.io" title="yz">yz</a>
+									<a href="https://a-jiang-pro.github.io" title="yz">yz</a>
 									<span class="px-2">⋅</span>
 									
 									
@@ -1011,7 +1011,7 @@ public class DemoApplication {
 
 	</div>
 
-	<script type="text/javascript" src='https://yz0812.github.io/media/scripts/main.js'></script>
+	<script type="text/javascript" src='https://a-jiang-pro.github.io/media/scripts/main.js'></script>
 	
 	<script>
 		var _hmt = _hmt || [];

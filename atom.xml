@@ -1,0 +1,1653 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://yz0812.github.io</id>
+    <title>yz</title>
+    <updated>2025-11-22T15:26:08.241Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://yz0812.github.io"/>
+    <link rel="self" href="https://yz0812.github.io/atom.xml"/>
+    <subtitle>少年拥有了时间,时间带走了年少</subtitle>
+    <logo>https://yz0812.github.io/images/avatar.png</logo>
+    <icon>https://yz0812.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2025, yz</rights>
+    <entry>
+        <title type="html"><![CDATA[节省C盘空间的方式——符号链接]]></title>
+        <id>https://yz0812.github.io/post/jie-sheng-c-pan-kong-jian-de-fang-shi-fu-hao-lian-jie/</id>
+        <link href="https://yz0812.github.io/post/jie-sheng-c-pan-kong-jian-de-fang-shi-fu-hao-lian-jie/">
+        </link>
+        <updated>2025-05-23T16:11:49.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="节省c盘空间的方式符号链接">节省C盘空间的方式——符号链接</h1>
+<blockquote>
+<p>原文链接：<a href="https://linux.do/t/topic/494304">一种优雅的节省C盘空间的方式——符号链接</a></p>
+</blockquote>
+<h2 id="问题背景">🧩 问题背景</h2>
+<p>在 Windows 系统中，Docker Desktop 默认将其数据存储在系统盘（C盘）的用户目录下：</p>
+<pre><code>C:\Users&lt;用户名&gt;\AppData\Local\Docker  
+</code></pre>
+<p>随着使用时间增长，镜像、容器和卷数据会占用大量空间，导致 C 盘空间不足。</p>
+<hr>
+<h2 id="解决方案使用符号链接symbolic-link">✅ 解决方案：使用符号链接（Symbolic Link）</h2>
+<p>通过创建符号链接，可以将 Docker 数据重定向到其他磁盘，同时保持原有路径的访问方式不变。这种方法：</p>
+<ul>
+<li>不影响 Docker Desktop 的正常运行；</li>
+<li>不需要修改软件配置；</li>
+<li>能有效节省 C 盘空间；</li>
+<li>对其他程序完全透明。</li>
+</ul>
+<hr>
+<h2 id="操作步骤">🛠 操作步骤</h2>
+<h3 id="1-关闭-docker-desktop">1. 关闭 Docker Desktop</h3>
+<p>确保 Docker Desktop 完全关闭，可在系统托盘右键 Docker 图标选择“退出 Docker Desktop”。如启用了 WSL，也应关闭。</p>
+<h3 id="2-创建目标目录">2. 创建目标目录</h3>
+<p>在目标磁盘（如 F 盘）中创建目标文件夹：</p>
+<pre><code>F:\AppData\Local\Docker
+</code></pre>
+<h3 id="3-迁移数据如有">3. 迁移数据（如有）</h3>
+<p>将以下目录剪切到新位置：<code>C:\Users&lt;用户名&gt;\AppData\Local\Docker</code>→<code>F:\AppData\Local\Docker</code></p>
+<p>⚠️ 确保相关进程已经完全停止。</p>
+<h3 id="4-创建符号链接">4. 创建符号链接</h3>
+<p>使用管理员权限打开命令提示符（CMD），运行：</p>
+<pre><code>mklink /D &quot;C:\Users&lt;用户名&gt;\AppData\Local\Docker&quot; &quot;F:\AppData\Local\Docker&quot;
+</code></pre>
+<blockquote>
+<p>注意：</p>
+<ul>
+<li>原始目录不能存在；</li>
+<li><code>/D</code> 表示创建目录符号链接。</li>
+</ul>
+</blockquote>
+<h3 id="5-启动-docker-并验证">5. 启动 Docker 并验证</h3>
+<ul>
+<li>启动 Docker Desktop；</li>
+<li>执行镜像拉取、容器启动等操作；</li>
+<li>确认数据是否出现在 F 盘路径；</li>
+<li>使用以下命令验证符号链接状态：</li>
+</ul>
+<pre><code>dir &quot;C:\Users\&lt;用户名&gt;\AppData\Local&quot; /AL
+</code></pre>
+<hr>
+<h2 id="方法优势">🎯 方法优势</h2>
+<ul>
+<li>🛠 无需修改 Docker Desktop 配置；</li>
+<li>📦 可透明使用 Docker；</li>
+<li>💾 节省 C 盘空间；</li>
+<li>🔁 可随时更换数据存储位置。</li>
+</ul>
+<hr>
+<h2 id="拓展应用">📦 拓展应用</h2>
+<p>除了 Docker，该方法也适用于以下软件的数据转移：</p>
+<ul>
+<li>Chrome 浏览器缓存目录；</li>
+<li>JetBrains 系列软件配置目录；</li>
+<li>WPS Office 数据；</li>
+<li>微信/QQ 文件存储位置等。</li>
+</ul>
+<hr>
+<h2 id="参考资料">📚 参考资料</h2>
+<ul>
+<li><a href="https://linux.do/t/topic/494304">原文链接</a></li>
+<li><a href="https://ios.sspai.com/post/66834">符号链接、硬链接及其在 Windows 上的应用举例 - 少数派</a></li>
+</ul>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[一键安装 Zsh 增强环境]]></title>
+        <id>https://yz0812.github.io/post/yi-jian-an-zhuang-zsh-zeng-qiang-huan-jing/</id>
+        <link href="https://yz0812.github.io/post/yi-jian-an-zhuang-zsh-zeng-qiang-huan-jing/">
+        </link>
+        <updated>2025-05-22T02:33:04.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="一键安装-zsh-增强环境">🚀 一键安装 Zsh 增强环境</h1>
+<p>使用以下命令快速安装 Zsh、Oh My Zsh 及常用增强插件：</p>
+<pre><code class="language-bash">bash &lt;(curl -sSL https://gitee.com/yz0812/script/raw/master/install_zsh_enhancements.sh)
+</code></pre>
+<h2 id="脚本自动安装内容">📦 脚本自动安装内容</h2>
+<ul>
+<li>安装 zsh 和 oh-my-zsh</li>
+<li>安装并配置插件：
+<ul>
+<li><code>git</code></li>
+<li><code>zsh-syntax-highlighting</code></li>
+<li><code>zsh-autosuggestions</code></li>
+<li><code>history</code></li>
+<li><code>z</code></li>
+<li><code>docker</code></li>
+<li><code>docker-compose</code></li>
+</ul>
+</li>
+<li>自动设置 zsh 为默认 shell</li>
+<li>自动配置 .zshrc 插件列表及补全功能</li>
+</ul>
+<h2 id="插件介绍与示例">🔌 插件介绍与示例</h2>
+<h3 id="git"><code>git</code></h3>
+<p>提供大量 Git 命令别名：</p>
+<pre><code class="language-bash">gst       # git status
+gco       # git checkout
+gaa       # git add .
+</code></pre>
+<hr>
+<h3 id="zsh-syntax-highlighting"><code>zsh-syntax-highlighting</code></h3>
+<p>命令输入实时高亮提示：</p>
+<ul>
+<li>正确命令为绿色 ✅</li>
+<li>错误命令为红色 ❌</li>
+</ul>
+<pre><code class="language-bash">ls -la        # 正确命令，高亮绿色
+lss -la       # 错误命令，高亮红色
+</code></pre>
+<hr>
+<h3 id="zsh-autosuggestions"><code>zsh-autosuggestions</code></h3>
+<p>根据历史记录自动提示命令，按 <code>→</code> 键补全。</p>
+<pre><code class="language-bash"># 输入 docker 会提示：
+docker-compose up  # 灰色显示，按 → 补全
+</code></pre>
+<hr>
+<h3 id="history"><code>history</code></h3>
+<p>增强历史命令搜索功能：</p>
+<pre><code class="language-bash">history 100 | grep docker
+</code></pre>
+<hr>
+<h3 id="z"><code>z</code></h3>
+<p>快速跳转常用目录：</p>
+<pre><code class="language-bash">z 项目名
+# 示例：
+cd ~/projects/my-app
+z my-app  # 下一次可直接跳转
+</code></pre>
+<hr>
+<h3 id="docker-和-docker-compose"><code>docker</code> 和 <code>docker-compose</code></h3>
+<p>提供常用快捷命令别名：</p>
+<pre><code class="language-bash">dcu   # docker-compose up
+dcd   # docker-compose down
+dps   # docker ps
+</code></pre>
+<hr>
+<h2 id="️-脚本做了什么">⚙️ 脚本做了什么？</h2>
+<h3 id="步骤概览">✅ 步骤概览</h3>
+<ol>
+<li>安装依赖：<code>git</code> <code>curl</code> <code>wget</code> <code>zsh</code></li>
+<li>安装 Oh My Zsh（支持 Gitee 镜像）</li>
+<li>克隆插件仓库到 <code>~/.oh-my-zsh/custom/plugins/</code></li>
+<li>自动修改 <code>.zshrc</code>：
+<ul>
+<li>启用插件列表</li>
+<li>初始化 <code>compinit</code></li>
+</ul>
+</li>
+<li>设置默认 shell 为 zsh</li>
+</ol>
+<hr>
+<h2 id="使用后如何生效">🧪 使用后如何生效？</h2>
+<ul>
+<li><strong>重启终端</strong> 或执行：</li>
+</ul>
+<pre><code class="language-bash">source ~/.zshrc
+</code></pre>
+<ul>
+<li><strong>如果 zsh 未生效</strong>，尝试重新登录或执行：</li>
+</ul>
+<pre><code class="language-bash">chsh -s $(which zsh)
+</code></pre>
+<hr>
+<h2 id="示例插件配置位于-zshrc">📝 示例插件配置（位于 <code>.zshrc</code>）：</h2>
+<pre><code class="language-zsh">plugins=(
+  git
+  zsh-syntax-highlighting
+  zsh-autosuggestions
+  history
+  z
+  docker
+  docker-compose
+)
+</code></pre>
+<hr>
+<h2 id="常见问题">❗ 常见问题</h2>
+<ul>
+<li><strong>提示符乱码？</strong> 请安装 <a href="https://github.com/powerline/fonts">Powerline 字体</a></li>
+<li><strong><code>compaudit: insecure directories</code> 错误？</strong></li>
+</ul>
+<pre><code class="language-bash">chmod -R 755 ~/.oh-my-zsh/custom/plugins &amp;&amp; compinit -u
+</code></pre>
+<hr>
+<h2 id="️-项目来源">❤️ 项目来源</h2>
+<ul>
+<li>插件仓库镜像由 <a href="https://gitee.com/yz0812">@yz0812</a> 提供</li>
+<li>欢迎 Fork、修改或提交 PR</li>
+</ul>
+<hr>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Rime 中州韻輸入法引擎 + 雾凇拼音]]></title>
+        <id>https://yz0812.github.io/post/rime-zhong-zhou-yun-shu-ru-fa-yin-qing-wu-song-pin-yin/</id>
+        <link href="https://yz0812.github.io/post/rime-zhong-zhou-yun-shu-ru-fa-yin-qing-wu-song-pin-yin/">
+        </link>
+        <updated>2025-03-26T10:25:18.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="rime-中州韻輸入法引擎-雾凇拼音">Rime 中州韻輸入法引擎 + 雾凇拼音</h1>
+<p>先看效果<br>
+<img src="upload://3sRDWweszjrAVo5WcYOMPmUes8r.png" alt="image|690x180" loading="lazy"></p>
+<blockquote>
+<p>前提，作者一直使用Windows自带输入法，但是windows自带输入法和CSGO冲突所以寻求第三方输入法，遂找到这个（妈的一样不可以，但是发现这个输入法还挺好用的），有关这个的介绍可以 <a href="https://sspai.com/post/73634">Rime 从了解到入门 - 少数派 (sspai.com)</a>参考这个</p>
+</blockquote>
+<h2 id="1-下载安装-rime-中州韻輸入法引擎">1.  <a href="https://rime.im/download/">下载安装 | RIME | 中州韻輸入法引擎</a></h2>
+<p>全部下一步下一步即可</p>
+<h2 id="雾凇拼音介绍与安装">雾凇拼音介绍与安装</h2>
+<blockquote>
+<p>简介和官方文档  <a href="https://dvel.me/posts/rime-ice/">雾凇拼音</a></p>
+</blockquote>
+<ul>
+<li>简体 | 全拼 | 双拼</li>
+<li>主要功能
+<ul>
+<li><a href="https://github.com/tumuyan/rime-melt">melt_eng</a> 英文输入</li>
+<li><a href="https://dvel.me/posts/make-rime-en-better/">优化英文输入体验</a></li>
+<li><a href="https://github.com/mirtlecn/rime-radical-pinyin">部件拆字方案</a> 反查、辅码</li>
+<li>自整理的 Emoji</li>
+<li><a href="https://github.com/BlindingDark/rime-lua-select-character">以词定字</a></li>
+<li><a href="https://github.com/tumuyan/rime-melt/blob/master/lua/melt.lua">长词优先</a></li>
+<li><a href="https://github.com/shewer/librime-lua-script/blob/main/lua/component/unicode.lua">Unicode</a></li>
+<li><a href="https://wb98.gitee.io/">数字、人民币大写</a></li>
+<li>日期、时间、星期、<a href="https://github.com/boomker/rime-fast-xhup">农历</a></li>
+<li>常见错音错字提示</li>
+<li>置顶候选项</li>
+<li>所有标点符号直接上屏，/ 模式改为 v 模式，/ 直接上屏</li>
+<li>增加了许多拼音纠错</li>
+</ul>
+</li>
+<li>简体字表、词库
+<ul>
+<li><a href="https://github.com/iDvel/The-Table-of-General-Standard-Chinese-Characters">《通用规范汉字表》</a></li>
+<li><a href="http://bbs.pinyin.thunisoft.com/forum.php?mod=viewthread&amp;tid=30049">华宇野风系统词库</a></li>
+<li><a href="https://github.com/thunlp/THUOCL">清华大学开源词库</a></li>
+<li><a href="https://gist.github.com/indiejoseph/eae09c673460aa0b56db">《现代汉语常用词表》</a></li>
+<li><a href="https://forum.freemdict.com/t/topic/12102">《现代汉语词典》</a></li>
+<li><a href="https://forum.freemdict.com/t/topic/1211">《同义词词林》</a></li>
+<li><a href="https://forum.freemdict.com/t/topic/11407">《新华成语大词典》</a></li>
+<li><a href="https://ai.tencent.com/ailab/nlp/en/download.html">腾讯词向量</a></li>
+</ul>
+</li>
+<li>词库修订
+<ul>
+<li>校对大量异形词、错别字、错误注音</li>
+<li>全词库完成注音</li>
+<li>同义多音字注音</li>
+</ul>
+</li>
+</ul>
+<h3 id="21-github下载">2.1  <a href="https://github.com/iDvel/rime-ice">github下载</a></h3>
+<ol>
+<li>github下载，解压</li>
+<li>打开用户文件夹</li>
+<li>全部复制进去</li>
+<li>右击选择重新部署<br>
+5.右击选择输入法设定选择雾凇拼音<br>
+<img src="upload://4eN14fm72uHkBcrd8ee7ON6J41Z.png" alt="image|270x417" loading="lazy"></li>
+</ol>
+<h3 id="22-命令安装">2.2 命令安装</h3>
+<ol>
+<li>点击输入法设定</li>
+<li>更多输入设置</li>
+<li>执行 <code>iDvel/rime-ice:others/recipes/full</code></li>
+<li>回车确认，随即 RIME 会自动下载</li>
+<li>稍等片刻，命令提示符出现「<code>Updated xxx files...</code> 」的提示（黄色字样），表示安装完成。此时可以直接关掉该窗口。</li>
+<li>右击选择重新部署</li>
+<li>右击选择输入法设定选择雾凇拼音</li>
+</ol>
+<h3 id="23-rime输入法安装脚本快捷安装">2.3 Rime输入法安装脚本快捷安装</h3>
+<p><a href="https://github.com/Mark24Code/rime-auto-deploy">Mark24Code/rime-auto-deploy: Rime输入法安装脚本，让一切更轻松。Make using Rime easy. (github.com)</a></p>
+<h2 id="3-同步设置">3. 同步设置</h2>
+<p>本人选择使用OneDrive同步</p>
+<ol>
+<li>右击选择用户文件夹</li>
+<li>找到 <code>installation.yaml</code></li>
+<li>编辑 sync_dir 和 installation_id</li>
+</ol>
+<pre><code class="language-properties">distribution_code_name: Weasel
+distribution_name: &quot;小狼毫&quot;
+distribution_version: 0.16.1
+install_time: &quot;Tue Sep 10 14:01:19 2024&quot;
+installation_id: &quot;Win NUC8&quot;  # 同步的ID，在同步文件夹作为文件夹名称显示
+rime_version: 1.11.2
+sync_dir: C:\Users\y\OneDrive\Rimeuser # 同步文件夹位置
+</code></pre>
+<ol start="4">
+<li>右击选择用户资料同步</li>
+</ol>
+<h2 id="4-皮肤设置">4. 皮肤设置</h2>
+<p><a href="https://github.com/rime/weasel/wiki/%E7%A4%BA%E4%BE%8B#windows-11-%E9%A3%8E%E6%A0%BC">示例 · rime/weasel Wiki (github.com)</a></p>
+<figure data-type="image" tabindex="1"><img src="upload://fONRb8lAWzs0WpMIA27RMSTrCM8.jpeg" alt="FireShot Capture 001 - 示例 · rime_weasel Wiki - github.com|128x500" loading="lazy"></figure>
+<blockquote>
+<p>分享本人基于官方windows11修改的皮肤设置</p>
+</blockquote>
+<pre><code>patch:
+  &quot;preset_color_schemes/+&quot;:
+    win11dark: {back_color: 0x2C2C2C, border_color: 0x002C2C2C, hilited_candidate_back_color: 0x383838, hilited_label_color: 0xf9f9f9, hilited_mark_color: 0xFFC24C, label_color: 0xf9f9f9, name: &quot;Win11暗色 / Win11Dark&quot;, shadow_color: 0x20000000, text_color: 0xf9f9f9}
+    win11light: {back_color: 0xf9f9f9, border_color: 0x009e5a00, hilited_candidate_back_color: 0xf0f0f0, hilited_label_color: 0x191919, hilited_mark_color: 0xc06700, label_color: 0x191919, name: &quot; Win11浅色 / Win11light&quot;, shadow_color: 0x20000000, text_color: 0x191919}
+  &quot;style/+&quot;:
+    color_scheme: win11light
+    color_scheme_dark: win11dark
+    comment_font_point: 10
+    font_point: 10
+    horizontal: true
+    inline_preedit: true
+    label_font_point: 10
+    label_format: &quot;%s&quot;
+    layout: {border: 2, candidate_spacing: 22, corner_radius: 10, hilite_padding: 8, hilite_padding_x: 8, hilite_spacing: 6, margin_x: 16, margin_y: 8, min_width: 10, round_corner: 8, shadow_radius: 8}
+  &quot;style/color_scheme&quot;: win11light
+</code></pre>
+<h2 id="5词库增强和自定义词库">5.词库增强和自定义词库</h2>
+<ol>
+<li>下载 <a href="https://github.com/Iorest/rime-setting">词库</a>，解压</li>
+<li>移动到用户文件夹</li>
+<li>挂载词库</li>
+</ol>
+<pre><code># rime_ice.dict.yaml
+
+---
+name: rime_ice
+version: &quot;1&quot;
+import_tables:
+  - mydict            # 挂载配置目录下的 mydict.dict.yaml
+  - cn_dicts/mydict2  # 挂载 cn_dicts/ 目录下的 mydict2.dict.yaml
+...
+</code></pre>
+<p>自定义词库<br>
+在 <code>custom_phrase.txt</code> 中可以放置一些特定的词汇与编码，比如输入 vmail 得到自己的邮箱，输入 vphone 得到手机号，输入 vuser 得到用户名等等。</p>
+<h2 id="优化设置">优化设置</h2>
+<ol>
+<li>修改候选词数量  <code>default.custom.yaml</code> 中 <code>patch.menu.page_size: 5</code></li>
+<li>[修改中英文切换提示图标] (https://linux.do/t/topic/201789/5) <code>weasel.yaml</code> show_notifications 为false</li>
+</ol>
+<p><em>最后表达歉意，本文章按照个人想法编写，没有携带较多图片教程，可能不太适合电脑小白，因为本人方便文章迁移，本人没有图床，所以尽可能的少使用图片</em></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[目录结构树生成器 ]]></title>
+        <id>https://yz0812.github.io/post/mu-lu-jie-gou-shu-sheng-cheng-qi/</id>
+        <link href="https://yz0812.github.io/post/mu-lu-jie-gou-shu-sheng-cheng-qi/">
+        </link>
+        <updated>2025-03-26T10:22:58.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="1-使用场景">1. 使用场景</h1>
+<p><strong>需要撰写README的模块结构，目录太多想着自己写一个小工具</strong><br>
+<img src="upload://l8uQU02oxfAaGVIHbP2ZgR2n9RL.png" alt="image|690x413" loading="lazy"></p>
+<h1 id="2访问地址">2.访问地址</h1>
+<p>访问地址 <a href="https://directory-structure.wuc0714.top/">https://directory-structure.wuc0714.top</a><br>
+git地址 <a href="https://github.com/yz0812/folders">yz0812/folders</a></p>
+<h1 id="3效果图">3.效果图</h1>
+<figure data-type="image" tabindex="1"><img src="upload://pMAq8PqltxnGoEC1C5YGtrJf5MK.png" alt="FireShot Capture 006 - 目录结构树生成器 - directory-structure.wuc0714.top|476x500" loading="lazy"></figure>
+<p><span style='color:red'> 欢迎大佬提PR</span></p>
+<p><span style='color:red'> 由于浏览器限制无法使用拖拽的方式</span><br>
+<span style='color:red'> 支持展示目录或者全部文件</span><br>
+<span style='color:red'> 支持设置层深</span><br>
+<span style='color:red'> 可以快捷部署cloudflare</span><br>
+<span style='color:red'> 支持忽略功能和备注功能</span></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[ Cursor Java项目开发环境配置指南]]></title>
+        <id>https://yz0812.github.io/post/cursor-java-xiang-mu-kai-fa-huan-jing-pei-zhi-zhi-nan/</id>
+        <link href="https://yz0812.github.io/post/cursor-java-xiang-mu-kai-fa-huan-jing-pei-zhi-zhi-nan/">
+        </link>
+        <updated>2025-03-26T10:19:55.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="cursor-java项目开发环境配置指南">Cursor Java项目开发环境配置指南</h1>
+<h2 id="插件配置">插件配置</h2>
+<h3 id="idea与cursor跳转配置">Idea与Cursor跳转配置</h3>
+<p>使用以下插件可以在IntelliJ IDEA和Cursor之间快速切换：</p>
+<p><strong>Switch2Cursor (IDEA 插件)</strong><br>
+<strong>Switch2IDEA (Cursor 插件)</strong></p>
+<p><strong>快捷键</strong>：</p>
+<ul>
+<li><code>Alt+Shift+O</code>：在另一 IDE 中打开当前文件</li>
+<li><code>Alt+Shift+P</code>：在另一 IDE 中打开当前项目</li>
+</ul>
+<p><strong>安装和配置步骤</strong>：</p>
+<p><strong>IDEA 插件安装</strong>：</p>
+<ol>
+<li>打开 IntelliJ IDEA</li>
+<li>进入 <code>File</code> → <code>Settings</code> → <code>Plugins</code></li>
+<li>在搜索栏中输入 <code>switch2cursor</code></li>
+<li>点击 <code>Install</code> 按钮安装</li>
+<li>重启 IDEA 后生效</li>
+<li>进入 <code>File</code> → <code>Settings</code> → <code>Tools</code> → <code>Switch2Cursor</code></li>
+<li>设置 Cursor 可执行文件的路径（例如：<code>C:\Users\用户名\AppData\Local\Programs\Cursor\Cursor.exe</code>）</li>
+</ol>
+<p><strong>Cursor 插件安装</strong>：</p>
+<ol>
+<li>打开 Cursor</li>
+<li>点击左侧边栏的扩展图标或使用快捷键 <code>Ctrl+Shift+X</code></li>
+<li>在搜索栏中输入 <code>switch2idea</code></li>
+<li>点击 <code>Install</code> 按钮安装</li>
+<li>重启 Cursor 后生效</li>
+<li>点击左下角齿轮图标打开设置，或使用快捷键 <code>Ctrl+,</code></li>
+<li>在搜索栏中输入 <code>switch2idea</code></li>
+<li>设置 IDEA 可执行文件的路径（例如：<code>C:\Program Files\JetBrains\IntelliJ IDEA\bin\idea64.exe</code>）</li>
+</ol>
+<h3 id="java开发环境插件">Java开发环境插件</h3>
+<p>以下是在Cursor中配置Java开发环境的必备插件：</p>
+<ol>
+<li>
+<p><strong>Extension Pack for Java</strong></p>
+<ul>
+<li>包含了Java开发所需的核心扩展</li>
+<li><strong>安装步骤</strong>：
+<ol>
+<li>打开Cursor</li>
+<li>点击左侧扩展图标或使用快捷键 <code>Ctrl+Shift+X</code></li>
+<li>搜索 &quot;Extension Pack for Java&quot;</li>
+<li>点击 &quot;Install&quot; 安装</li>
+</ol>
+</li>
+<li><strong>JDK配置</strong>：
+<ol>
+<li>使用快捷键 <code>Ctrl+,</code> 打开设置</li>
+<li>搜索 &quot;java.home&quot;</li>
+<li>在 &quot;Java &gt; Configuration: Runtimes&quot; 设置中点击 &quot;Edit in settings.json&quot;</li>
+<li>添加JDK路径配置：</li>
+</ol>
+<pre><code class="language-json">&quot;java.configuration.runtimes&quot;: [
+  {
+    &quot;name&quot;: &quot;JavaSE-17&quot;,
+    &quot;path&quot;: &quot;C:\\Program Files\\Java\\jdk-17&quot;,
+    &quot;default&quot;: true
+  }
+]
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Language Support for Java(TM) by Red Hat</strong></p>
+<ul>
+<li>提供基础的Java语法高亮、代码跳转、自动补全等功能</li>
+<li><strong>安装步骤</strong>：
+<ol>
+<li>打开扩展市场</li>
+<li>搜索 &quot;Language Support for Java&quot;</li>
+<li>找到 Red Hat 提供的版本并安装</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Debugger for Java</strong></p>
+<ul>
+<li>支持Java代码的调试功能</li>
+<li><strong>安装步骤</strong>：
+<ol>
+<li>打开扩展市场</li>
+<li>搜索 &quot;Debugger for Java&quot;</li>
+<li>安装该插件</li>
+</ol>
+</li>
+<li><strong>使用方法</strong>：
+<ol>
+<li>在代码左侧边栏点击设置断点</li>
+<li>按 <code>F5</code> 键或点击调试按钮开始调试</li>
+<li>使用调试工具栏控制执行流程</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Maven for Java</strong></p>
+<ul>
+<li>提供对Maven项目的支持</li>
+<li><strong>安装步骤</strong>：
+<ol>
+<li>打开扩展市场</li>
+<li>搜索 &quot;Maven for Java&quot;</li>
+<li>安装该插件</li>
+</ol>
+</li>
+<li><strong>Maven配置</strong>：
+<ol>
+<li>使用快捷键 <code>Ctrl+,</code> 打开设置</li>
+<li>搜索 &quot;java.configuration.maven&quot;</li>
+<li>在设置中配置Maven路径，例如：</li>
+</ol>
+<pre><code class="language-json">&quot;java.configuration.maven.globalSettings&quot;: &quot;C:\\path\\to\\settings.xml&quot;,
+&quot;maven.executable.path&quot;: &quot;C:\\path\\to\\apache-maven\\bin\\mvn.cmd&quot;
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Spring Boot Extension Pack</strong></p>
+<ul>
+<li>如果使用Spring Boot开发，此插件包提供便捷功能</li>
+<li><strong>安装步骤</strong>：
+<ol>
+<li>打开扩展市场</li>
+<li>搜索 &quot;Spring Boot Extension Pack&quot;</li>
+<li>安装该插件包</li>
+</ol>
+</li>
+<li><strong>包含功能</strong>：
+<ul>
+<li>Spring Initializr</li>
+<li>Spring Boot Dashboard</li>
+<li>Spring Boot项目支持</li>
+<li>自动配置提示和导航</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Lombok Annotations Support</strong></p>
+<ul>
+<li>支持Lombok注解</li>
+<li><strong>安装步骤</strong>：
+<ol>
+<li>打开扩展市场</li>
+<li>搜索 &quot;Lombok Annotations Support&quot;</li>
+<li>安装该插件</li>
+</ol>
+</li>
+<li><strong>配置</strong>：
+<ol>
+<li>确保项目中已添加Lombok依赖</li>
+<li>重启Cursor以使配置生效</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Java Extension Pack</strong></p>
+<ul>
+<li>包含多种必备的Java插件集合</li>
+<li><strong>安装步骤</strong>：
+<ol>
+<li>打开扩展市场</li>
+<li>搜索 &quot;Java Extension Pack&quot;</li>
+<li>安装该插件包</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>MybatisX</strong></p>
+</li>
+</ol>
+<h3 id="jetbrains-fleet-主题">JetBrains Fleet 主题</h3>
+<p>使用JetBrainsd的Fleet主题使Cursor的界面风格更接近IntelliJ IDEA：</p>
+<p><strong>JetBrains Fleet Theme安装</strong>：</p>
+<ol>
+<li>打开扩展市场（<code>Ctrl+Shift+X</code>）</li>
+<li>搜索 &quot;Fleet Theme&quot;</li>
+<li>安装该主题</li>
+<li>使用 <code>Ctrl+K</code> 然后 <code>Ctrl+T</code> 打开主题选择器</li>
+<li>选择 &quot;Fleet Theme&quot; 应用主题</li>
+<li>重启Cursor使主题完全生效</li>
+</ol>
+<h2 id="推荐的额外配置">推荐的额外配置</h2>
+<h3 id="代码质量工具">代码质量工具</h3>
+<ol>
+<li>
+<p><strong>SonarLint</strong></p>
+<ul>
+<li>实时检测和修复代码质量问题</li>
+<li><strong>安装步骤</strong>：
+<ol>
+<li>打开扩展市场</li>
+<li>搜索 &quot;SonarLint&quot;</li>
+<li>安装该插件</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Checkstyle for Java</strong></p>
+<ul>
+<li>帮助强制执行代码风格规范</li>
+<li><strong>安装步骤</strong>：
+<ol>
+<li>打开扩展市场</li>
+<li>搜索 &quot;Checkstyle for Java&quot;</li>
+<li>安装该插件</li>
+</ol>
+</li>
+<li><strong>配置</strong>：
+<ol>
+<li>使用 <code>Ctrl+,</code> 打开设置</li>
+<li>搜索 &quot;java.checkstyle&quot;</li>
+<li>配置Checkstyle规则文件路径</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="性能优化">性能优化</h3>
+<p>为提高Cursor在处理大型Java项目时的性能：</p>
+<ol>
+<li>打开设置（<code>Ctrl+,</code>）</li>
+<li>搜索并调整以下设置：<pre><code class="language-json">&quot;java.server.launchMode&quot;: &quot;Standard&quot;,
+&quot;java.completion.maxResults&quot;: 50,
+&quot;java.autobuild.enabled&quot;: true,
+&quot;java.configuration.updateBuildConfiguration&quot;: &quot;automatic&quot;,
+&quot;java.jdt.ls.vmargs&quot;: &quot;-Xmx2G -XX:+UseG1GC -XX:+UseStringDeduplication&quot;
+</code></pre>
+</li>
+</ol>
+<h2 id="常见问题解决">常见问题解决</h2>
+<ol>
+<li>
+<p><strong>Java语言服务器未启动</strong></p>
+<ul>
+<li>检查Java路径配置是否正确</li>
+<li>在输出面板中查看错误日志（<code>Ctrl+Shift+U</code>）</li>
+<li>可能需要重启Cursor或增加JVM内存</li>
+</ul>
+</li>
+<li>
+<p><strong>Maven项目无法解析依赖</strong></p>
+<ul>
+<li>检查Maven配置路径</li>
+<li>确保settings.xml配置正确</li>
+<li>尝试在终端中运行 <code>mvn clean install -U</code> 强制更新</li>
+</ul>
+</li>
+<li>
+<p><strong>无法调试Java程序</strong></p>
+<ul>
+<li>确认JDK版本与项目兼容</li>
+<li>检查launch.json配置</li>
+<li>确保项目已成功编译</li>
+</ul>
+</li>
+</ol>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[guava 常用工具类]]></title>
+        <id>https://yz0812.github.io/post/guava-chang-yong-gong-ju-lei/</id>
+        <link href="https://yz0812.github.io/post/guava-chang-yong-gong-ju-lei/">
+        </link>
+        <updated>2024-08-01T17:38:23.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="字符处理">字符处理</h2>
+<h3 id="caseformat-命名格式转换">CaseFormat 命名格式转换</h3>
+<p>用于在不同的命名格式之间进行转换。常见的命名格式包括下划线分隔（如 <code>LOWER_UNDERSCORE</code>）、驼峰命名（如 <code>LOWER_CAMEL</code> 和 <code>UPPER_CAMEL</code>）、中划线分隔（如 <code>LOWER_HYPHEN</code>）等。</p>
+<p>以下是 <code>CaseFormat</code> 支持的几种命名格式：</p>
+<ul>
+<li>LOWER_HYPHEN（如 lower-hyphen）</li>
+<li>LOWER_UNDERSCORE（如 lower_underscore）</li>
+<li>LOWER_CAMEL（如 lowerCamel）</li>
+<li>UPPER_CAMEL（如 UpperCamel）</li>
+<li>UPPER_UNDERSCORE（如 UPPER_UNDERSCORE）</li>
+</ul>
+<pre><code class="language-java"> 	    // 示例字符串
+        String lowerUnderscore = &quot;example_string&quot;;
+        String lowerHyphen = &quot;example-string&quot;;
+        String lowerCamel = &quot;exampleString&quot;;
+        String upperCamel = &quot;ExampleString&quot;;
+        String upperUnderscore = &quot;EXAMPLE_STRING&quot;;
+
+		// 下划线分隔 -&gt; 驼峰命名
+        String result1 = CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, lowerUnderscore);
+        System.out.println(&quot;LOWER_UNDERSCORE to LOWER_CAMEL: &quot; + result1);
+
+        // 中划线分隔 -&gt; 下划线分隔
+        String result2 = CaseFormat.LOWER_HYPHEN.to(CaseFormat.LOWER_UNDERSCORE, lowerHyphen);
+        System.out.println(&quot;LOWER_HYPHEN to LOWER_UNDERSCORE: &quot; + result2);
+
+        // 驼峰命名 -&gt; 大写驼峰命名
+        String result3 = CaseFormat.LOWER_CAMEL.to(CaseFormat.UPPER_CAMEL, lowerCamel);
+        System.out.println(&quot;LOWER_CAMEL to UPPER_CAMEL: &quot; + result3);
+
+        // 大写驼峰命名 -&gt; 下划线分隔
+        String result4 = CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_UNDERSCORE, upperCamel);
+        System.out.println(&quot;UPPER_CAMEL to LOWER_UNDERSCORE: &quot; + result4);
+
+        // 大写下划线分隔 -&gt; 小写中划线分隔
+        String result5 = CaseFormat.UPPER_UNDERSCORE.to(CaseFormat.LOWER_HYPHEN, upperUnderscore);
+        System.out.println(&quot;UPPER_UNDERSCORE to LOWER_HYPHEN: &quot; + result5);
+</code></pre>
+<h3 id="charmatcher-字符串的匹配与过滤">CharMatcher 字符串的匹配与过滤</h3>
+<p>用于处理字符和字符串的匹配与过滤。<code>CharMatcher</code> 提供了一种方便的方式来匹配、过滤、替换字符串中的字符，支持多种预定义的匹配器（如匹配字母、数字、空白字符等）以及自定义匹配器。</p>
+<p>以下是一些常用的 <code>CharMatcher</code> 方法和预定义的匹配器：</p>
+<ul>
+<li><code>CharMatcher.any()</code>: 匹配任何字符。</li>
+<li><code>CharMatcher.none()</code>: 不匹配任何字符。</li>
+<li><code>CharMatcher.whitespace()</code>: 匹配空白字符（空格、制表符等）。</li>
+<li><code>CharMatcher.digit()</code>: 匹配数字字符。</li>
+<li><code>CharMatcher.javaLetter()</code>: 匹配 Java 字母字符。</li>
+<li><code>CharMatcher.javaDigit()</code>: 匹配 Java 数字字符。</li>
+<li><code>CharMatcher.is(char c)</code>: 匹配指定的字符。</li>
+<li><code>CharMatcher.isNot(char c)</code>: 匹配不是指定的字符。</li>
+<li><code>CharMatcher.inRange(char startInclusive, char endInclusive)</code>: 匹配指定范围内的字符。</li>
+</ul>
+<p>以下是一些常用的操作方法：</p>
+<ul>
+<li><code>retainFrom(CharSequence sequence)</code>: 保留匹配的字符。</li>
+<li><code>removeFrom(CharSequence sequence)</code>: 移除匹配的字符。</li>
+<li><code>replaceFrom(CharSequence sequence, char replacement)</code>: 替换匹配的字符。</li>
+<li><code>collapseFrom(CharSequence sequence, char replacement)</code>: 将连续匹配的字符替换为单个字符。</li>
+<li><code>trimFrom(CharSequence sequence)</code>: 去除字符串前后的匹配字符。</li>
+</ul>
+<pre><code class="language-java">        String input = &quot;This is a sample text, 1234!&quot;;
+
+        // 保留数字字符
+        String digitsOnly = CharMatcher.digit().retainFrom(input);
+        System.out.println(&quot;Digits only: &quot; + digitsOnly); // 输出: 1234
+
+        // 移除空白字符
+        String noWhitespace = CharMatcher.whitespace().removeFrom(input);
+        System.out.println(&quot;No whitespace: &quot; + noWhitespace); // 输出: Thisisasampletext,1234!
+
+        // 将所有字母转换为大写
+        String upperCaseLetters = CharMatcher.javaLetter().replaceFrom(input, c -&gt; Character.toUpperCase(c));
+        System.out.println(&quot;Upper case letters: &quot; + upperCaseLetters); // 输出: THIS IS A SAMPLE TEXT, 1234!
+
+        // 将连续的空白字符替换为单个空格
+        String collapsedWhitespace = CharMatcher.whitespace().collapseFrom(input, ' ');
+        System.out.println(&quot;Collapsed whitespace: &quot; + collapsedWhitespace); // 输出: This is a sample text, 1234!
+
+        // 去除字符串前后的标点符号
+        String trimPunctuation = CharMatcher.javaLetterOrDigit().negate().trimFrom(input);
+        System.out.println(&quot;Trim punctuation: &quot; + trimPunctuation); // 输出: This is a sample text, 1234
+
+        // 自定义匹配器：匹配所有小写字母
+        CharMatcher lowerCaseMatcher = CharMatcher.inRange('a', 'z');
+        String lowerCaseLetters = lowerCaseMatcher.retainFrom(input);
+        System.out.println(&quot;Lower case letters: &quot; + lowerCaseLetters); // 输出: hisisasampletext
+ 
+</code></pre>
+<h3 id="converter-类型转换">Converter 类型转换</h3>
+<p>用于在两种类型之间进行转换。<code>Converter</code> 提供了一种类型安全的方式来实现双向转换，可以定义从类型 A 到类型 B 的转换逻辑，以及从类型 B 到类型 A 的逆向转换逻辑。</p>
+<p>以下是 <code>Converter</code> 类的一些关键方法：</p>
+<ul>
+<li><code>doForward(A a)</code>: 将类型 A 转换为类型 B。</li>
+<li><code>doBackward(B b)</code>: 将类型 B 转换为类型 A。</li>
+<li><code>convert(A a)</code>: 调用 <code>doForward</code> 方法进行转换。</li>
+<li><code>reverse()</code>: 返回一个新的 <code>Converter</code>，其转换逻辑与当前 <code>Converter</code> 相反。</li>
+<li><code>andThen(Converter&lt;B, C&gt; other)</code>: 返回一个组合转换器，先应用当前转换器再应用 <code>other</code> 转换器。</li>
+</ul>
+<pre><code class="language-java">import com.google.common.base.Converter;
+
+public class ConverterExample {
+    public static void main(String[] args) {
+        // 创建一个字符串到整数的转换器
+        Converter&lt;String, Integer&gt; stringToIntegerConverter = new Converter&lt;String, Integer&gt;() {
+            @Override
+            protected Integer doForward(String s) {
+                return Integer.valueOf(s);
+            }
+
+            @Override
+            protected String doBackward(Integer integer) {
+                return integer.toString();
+            }
+        };
+
+        // 使用转换器进行正向转换
+        String str = &quot;1234&quot;;
+        Integer intValue = stringToIntegerConverter.convert(str);
+        System.out.println(&quot;String to Integer: &quot; + intValue); // 输出: 1234
+
+        // 使用转换器进行反向转换
+        String reversedStr = stringToIntegerConverter.reverse().convert(intValue);
+        System.out.println(&quot;Integer to String: &quot; + reversedStr); // 输出: 1234
+
+        // 创建一个小写到大写的转换器
+        Converter&lt;String, String&gt; lowerToUpperConverter = new Converter&lt;String, String&gt;() {
+            @Override
+            protected String doForward(String s) {
+                return s.toUpperCase();
+            }
+
+            @Override
+            protected String doBackward(String s) {
+                return s.toLowerCase();
+            }
+        };
+
+        // 组合转换器：先将字符串转换为整数，再将整数转换为大写字符串
+        Converter&lt;String, String&gt; combinedConverter = stringToIntegerConverter.andThen(new Converter&lt;Integer, String&gt;() {
+            @Override
+            protected String doForward(Integer integer) {
+                return &quot;Number: &quot; + integer;
+            }
+
+            @Override
+            protected Integer doBackward(String s) {
+                return Integer.valueOf(s.replace(&quot;Number: &quot;, &quot;&quot;));
+            }
+        });
+
+        // 使用组合转换器进行转换
+        String combinedResult = combinedConverter.convert(str);
+        System.out.println(&quot;Combined Converter Result: &quot; + combinedResult); // 输出: Number: 1234
+
+        // 使用组合转换器进行反向转换
+        String originalStr = combinedConverter.reverse().convert(combinedResult);
+        System.out.println(&quot;Original String: &quot; + originalStr); // 输出: 1234
+    }
+}
+
+</code></pre>
+<h3 id="defaults-默认值">Defaults 默认值</h3>
+<p><code>com.google.common.base.Defaults</code> 是 Google Guava 库中的一个类，用于提供 Java 基本数据类型和一些常见对象类型的默认值。这个类主要用在需要默认值的场景下，比如在反射或者泛型编程中。</p>
+<pre><code class="language-java">        boolean defaultBoolean = Defaults.defaultValue(boolean.class);
+        byte defaultByte = Defaults.defaultValue(byte.class);
+        char defaultChar = Defaults.defaultValue(char.class);
+        double defaultDouble = Defaults.defaultValue(double.class);
+        float defaultFloat = Defaults.defaultValue(float.class);
+        int defaultInt = Defaults.defaultValue(int.class);
+        long defaultLong = Defaults.defaultValue(long.class);
+        short defaultShort = Defaults.defaultValue(short.class);
+</code></pre>
+<h3 id="joiner-多字符串处理">Joiner 多字符串处理</h3>
+<p>用于将多个字符串或对象连接成一个字符串。它提供了一种简洁而强大的方式来处理字符串连接，支持处理 <code>null</code> 值以及指定分隔</p>
+<p><em>常用方法</em></p>
+<p><code>on(String delimiter)</code>: 指定分隔符。</p>
+<p><code>skipNulls()</code>: 跳过 <code>null</code> 值。</p>
+<p><code>useForNull(String nullText)</code>: 将 <code>null</code> 值替换为指定的字符串。</p>
+<p><code>join(Iterable&lt;?&gt; parts)</code>: 将集合中的元素连接成一个字符串。</p>
+<p><code>join(Object[] parts)</code>: 将数组中的元素连接成一个字符串。</p>
+<p><code>join(Object first, Object second, Object... rest)</code>: 将多个参数连接成一个字符串。</p>
+<h3 id="splitter-字符串拆分">Splitter 字符串拆分</h3>
+<p>用于将字符串拆分为子字符串。它提供了比 <code>String.split</code> 更加灵活和强大的功能，支持多种拆分模式和选项，例如去除空白字符串、去除结果中的空格、限制拆分结果的数量等。</p>
+<p><em>常用方法</em></p>
+<ol>
+<li>
+<p><strong>基础拆分</strong>：</p>
+<ul>
+<li><code>Splitter.on(char separator)</code>: 基于单个字符进行拆分。</li>
+<li><code>Splitter.on(String separator)</code>: 基于字符串进行拆分。</li>
+<li><code>Splitter.onPattern(String pattern)</code>: 基于正则表达式进行拆分。</li>
+<li><code>Splitter.on(CharMatcher charMatcher)</code>: 基于 <code>CharMatcher</code> 进行拆分。</li>
+</ul>
+</li>
+<li>
+<p><strong>配置选项</strong>：</p>
+<ul>
+<li><code>omitEmptyStrings()</code>: 忽略空字符串。</li>
+<li><code>trimResults()</code>: 去除结果中的空格。</li>
+<li><code>trimResults(CharMatcher charMatcher)</code>: 根据 <code>CharMatcher</code> 去除结果中的字符。</li>
+<li><code>limit(int limit)</code>: 限制拆分结果的数量。</li>
+</ul>
+</li>
+<li>
+<p><strong>结果类型</strong>：</p>
+<ul>
+<li><code>split(CharSequence sequence)</code>: 拆分字符串，返回 <code>Iterable&lt;String&gt;</code>。</li>
+<li><code>splitToList(CharSequence sequence)</code>: 拆分字符串，返回 <code>List&lt;String&gt;</code>。</li>
+<li><code>splitToMap(CharSequence sequence)</code>: 将字符串拆分为键值对，返回 <code>Map&lt;String, String&gt;</code>。</li>
+</ul>
+</li>
+<li></li>
+</ol>
+<h3 id="strings-字符串处理">Strings 字符串处理</h3>
+<p>提供了许多静态方法，用于处理和操作字符串。它包含了很多常用的字符串操作方法，可以简化代码并提高可读性。</p>
+<p><em>常用方法</em></p>
+<ol>
+<li><strong>空字符串处理</strong>：
+<ul>
+<li><code>isNullOrEmpty(String string)</code>: 检查字符串是否为 <code>null</code> 或空。</li>
+<li><code>nullToEmpty(String string)</code>: 将 <code>null</code> 转换为空字符串。</li>
+<li><code>emptyToNull(String string)</code>: 将空字符串转换为 <code>null</code>。</li>
+</ul>
+</li>
+<li><strong>填充和重复</strong>：
+<ul>
+<li><code>padStart(String string, int minLength, char padChar)</code>: 用指定字符在字符串开头进行填充，使其达到指定长度。</li>
+<li><code>padEnd(String string, int minLength, char padChar)</code>: 用指定字符在字符串末尾进行填充，使其达到指定长度。</li>
+<li><code>repeat(String string, int count)</code>: 重复字符串指定次数。</li>
+</ul>
+</li>
+<li><strong>常用方法</strong>：
+<ul>
+<li><code>commonPrefix(CharSequence a, CharSequence b)</code>: 返回两个字符串的公共前缀。</li>
+<li><code>commonSuffix(CharSequence a, CharSequence b)</code>: 返回两个字符串的公共后缀。</li>
+</ul>
+</li>
+</ol>
+<h2 id="集合处理">集合处理</h2>
+<h3 id="lists">Lists</h3>
+<p><strong>常用方法</strong></p>
+<ol>
+<li><strong><code>Lists.newArrayList()</code></strong>: 创建一个可变的、空的 <code>ArrayList</code>。</li>
+<li><strong><code>Lists.newArrayList(E... elements)</code></strong>: 使用指定的元素创建一个可变的 <code>ArrayList</code>。</li>
+<li>**<code>Lists.newLinkedList(): </code>**创建一个可变的、空的 <code>LinkedList</code>。</li>
+<li><strong><code>Lists.partition(List&lt;T&gt; list, int size)</code></strong>: 将一个 <code>List</code> 分割成若干个子列表，每个子列表的大小为指定的 <code>size</code>。</li>
+<li><strong><code>Lists.reverse(List&lt;T&gt; list)</code></strong>:   返回一个包含相同元素但顺序相反的 <code>List</code>。</li>
+<li><strong><code>Lists.transform(List&lt;F&gt; fromList, Function&lt;? super F, ? extends T&gt; function)</code></strong>:  返回一个新的 <code>List</code>，该列表是通过将给定列表的每个元素传递给给定函数的结果构成的视图。</li>
+</ol>
+<h3 id="maps">Maps</h3>
+<p><strong>常用方法</strong></p>
+<ol>
+<li>**<code>Maps.newHashMap(): </code>**创建一个空的、可变的 <code>HashMap</code>。</li>
+<li><strong><code>Maps.newHashMapWithExpectedSize(int expectedSize)</code></strong>: 创建一个具有指定初始容量的 <code>HashMap</code>。</li>
+<li>**<code>Maps.newLinkedHashMap(): </code>**创建一个空的、可变的 <code>LinkedHashMap</code>。</li>
+<li>**<code>Maps.newTreeMap(): </code>**创建一个空的、可变的 <code>TreeMap</code>。</li>
+<li><strong><code>Maps.newConcurrentMap()</code></strong>: 创建一个空的、可变的 <code>ConcurrentMap</code>。</li>
+<li><strong><code>Maps.uniqueIndex(Iterable&lt;V&gt; values, Function&lt;? super V, K&gt; keyFunction)</code></strong>: 根据指定的键函数创建一个 <code>ImmutableMap</code>，键是由给定函数生成的。</li>
+<li><strong><code>Maps.difference(Map&lt;K, V&gt; left, Map&lt;K, V&gt; right)</code></strong>: 返回两个 <code>Map</code> 的差异视图。</li>
+</ol>
+<h3 id="range-范围">Range 范围</h3>
+<p><code>Range</code> 类可以表示一个区间，如 [1, 5]，(1, 5]，[1, 5)，(1, 5) 等等。它支持各种各样的操作，包括检查区间是否包含某个值、区间是否相交、区间的并集和交集等。</p>
+<p><strong>常用方法</strong></p>
+<ol>
+<li>**<code>Range.closed(C lower, C upper):</code>**创建一个包含下限和上限的范围 <code>[lower, upper]</code>。</li>
+<li><strong><code>Range.closedOpen(C lower, C upper)</code></strong>:创建一个包含下限但不包含上限的范围 <code>[lower, upper)</code>。</li>
+<li><strong><code>Range.openClosed(C lower, C upper)</code></strong>:创建一个不包含下限但包含上限的范围 <code>(lower, upper]</code>。</li>
+<li><strong><code>Range.open(C lower, C upper)</code></strong>:创建一个不包含下限和上限的范围 <code>(lower, upper)</code>。</li>
+<li><strong><code>Range.atLeast(C endpoint)</code></strong>:创建一个从指定值开始的范围 <code>[endpoint, ∞)</code>。</li>
+<li><strong><code>Range.atMost(C endpoint)</code></strong>:创建一个到指定值为止的范围 <code>(-∞, endpoint]</code>。</li>
+<li><strong><code>Range.greaterThan(C endpoint)</code></strong>:创建一个大于指定值的范围 <code>(endpoint, ∞)</code>。</li>
+<li><strong><code>Range.lessThan(C endpoint)</code></strong>:创建一个小于指定值的范围 <code>(-∞, endpoint)</code>。</li>
+<li><strong><code>Range.contains(C value)</code></strong>:检查范围是否包含指定值。</li>
+<li><strong><code>Range.isConnected(Range&lt;C&gt; other)</code></strong>:检查两个范围是否相连。</li>
+<li><strong><code>Range.intersection(Range&lt;C&gt; connectedRange)</code></strong>:返回两个相连范围的交集。</li>
+<li><strong><code>Range.span(Range&lt;C&gt; other)</code></strong>:返回两个范围的并集。</li>
+</ol>
+<h3 id="set">Set</h3>
+<p><strong>常用方法</strong></p>
+<ol>
+<li>**<code>Sets.newHashSet()</code>**创建一个空的 <code>HashSet</code>。</li>
+<li>**<code>Sets.newHashSet(E... elements)</code>**创建一个包含指定元素的 <code>HashSet</code>。</li>
+<li>**<code>Sets.newHashSetWithExpectedSize(int expectedSize)</code>**创建一个具有指定初始容量的 <code>HashSet</code>。</li>
+<li>**<code>Sets.newLinkedHashSet()</code>**创建一个空的 <code>LinkedHashSet</code>。</li>
+<li>**<code>Sets.newLinkedHashSet(Iterable&lt;? extends E&gt; elements)</code>**创建一个包含指定元素的 <code>LinkedHashSet</code>。</li>
+<li>**<code>Sets.newTreeSet()</code>**创建一个空的 <code>TreeSet</code>。</li>
+<li>**<code>Sets.newTreeSet(Comparator&lt;? super E&gt; comparator)</code>**创建一个带有比较器的空 <code>TreeSet</code>。</li>
+<li>**<code>Sets.union(Set&lt;E&gt; set1, Set&lt;E&gt; set2)</code>**返回两个集合的并集。</li>
+<li>**<code>Sets.intersection(Set&lt;E&gt; set1, Set&lt;E&gt; set2)</code>**返回两个集合的交集。</li>
+<li>**<code>Sets.difference(Set&lt;E&gt; set1, Set&lt;E&gt; set2)</code>**返回第一个集合与第二个集合的差集。</li>
+<li>**<code>Sets.symmetricDifference(Set&lt;E&gt; set1, Set&lt;E&gt; set2)</code>**返回两个集合的对称差集。</li>
+<li>**<code>Sets.cartesianProduct(Set&lt;E&gt;... sets)</code>**返回多个集合的笛卡尔积。</li>
+<li>**<code>Sets.powerSet(Set&lt;E&gt; set)</code>**返回给定集合的幂集。</li>
+</ol>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[JPA 小方法]]></title>
+        <id>https://yz0812.github.io/post/jpa-xiao-fang-fa/</id>
+        <link href="https://yz0812.github.io/post/jpa-xiao-fang-fa/">
+        </link>
+        <updated>2024-04-25T16:41:02.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="1生命周期注解">1.生命周期注解</h2>
+<p>JPA 生命周期事件注解的执行顺序如下：</p>
+<ol>
+<li><code>@PrePersist</code>: 在实体对象被持久化到数据库之前调用。</li>
+<li><code>@PostPersist</code>: 在实体对象被持久化到数据库之后调用。</li>
+<li><code>@PreUpdate</code>: 在实体对象更新到数据库之前调用。</li>
+<li><code>@PostUpdate</code>: 在实体对象更新到数据库之后调用。</li>
+<li><code>@PreRemove</code>: 在实体对象从数据库中移除之前调用。</li>
+<li><code>@PostRemove</code>: 在实体对象从数据库中移除之后调用。</li>
+<li><code>@PostLoad</code>: 在实体对象从数据库加载到内存后调用。</li>
+</ol>
+<h3 id="1-entitylisteners">1. @EntityListeners</h3>
+<blockquote>
+<p><strong><code>@EntityListeners</code> 是 Java Persistence API (JPA) 中的一个注解，用于将实体监听器（Entity Listeners）与特定的实体类关联起来。实体监听器是一种特殊的类，用于在实体对象的生命周期事件发生时执行相应的操作。<code>@EntityListeners</code> 注解的作用是将这些监听器与实体类进行绑定，以便在实体类触发相应事件时调用监听器中定义的方法。</strong></p>
+</blockquote>
+<pre><code class="language-java">import javax.persistence.*;
+
+@Entity
+@EntityListeners(EmployeeListener.class)
+public class Employee {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+    private String department;
+}
+
+public class EmployeeListener {
+    @PrePersist
+    public void prePersist(Employee employee) {
+        // 在实体对象被持久化到数据库之前调用
+        System.out.println(&quot;Employee prePersist: &quot; + employee.getName());
+    }
+
+    @PostPersist
+    public void postPersist(Employee employee) {
+        // 在实体对象被持久化到数据库之后调用
+        System.out.println(&quot;Employee postPersist: &quot; + employee.getName());
+    }
+
+ 
+}
+</code></pre>
+<h3 id="2-prepersist">2. @PrePersist</h3>
+<blockquote>
+<p><strong><code>@PrePersist</code> 是 Java Persistence API (JPA) 的一个生命周期事件注解，用于指定在实体对象被持久化到数据库之前要执行的方法。当执行持久化操作时，例如调用 <code>EntityManager</code> 的 <code>persist</code> 方法保存实体对象时，被标记了 <code>@PrePersist</code> 注解的方法将在实体对象被持久化之前被调用。</strong></p>
+</blockquote>
+<pre><code class="language-java">import javax.persistence.*;
+
+@Entity
+public class Employee {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+    private String department;
+
+    @PrePersist
+    public void prePersist() {
+        // 在实体对象被持久化到数据库之前调用
+        System.out.println(&quot;PrePersist: &quot; + name);
+        // 可在这里执行其他逻辑操作
+    }
+}
+</code></pre>
+<h3 id="3-postpersist">3. @PostPersist</h3>
+<blockquote>
+<p><strong><code>@PostPersist</code> 是 Java Persistence API (JPA) 的一个生命周期事件注解，用于指定在实体对象被持久化到数据库之后要执行的方法。当执行持久化操作时，例如调用 <code>EntityManager</code> 的 <code>persist</code> 方法保存实体对象后，被标记了 <code>@PostPersist</code> 注解的方法将在实体对象被持久化之后被调用。</strong></p>
+</blockquote>
+<pre><code class="language-java">import javax.persistence.*;
+
+@Entity
+public class Employee {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+    private String department;
+
+    @PostPersist
+    public void postPersist() {
+        // 在实体对象被持久化到数据库之后调用
+        System.out.println(&quot;PostPersist: &quot; + name);
+        // 可在这里执行其他逻辑操作
+    }
+}
+</code></pre>
+<h3 id="4-preupdate">4. @PreUpdate</h3>
+<blockquote>
+<p><strong><code>@PreUpdate</code> 是 Java Persistence API (JPA) 的一个生命周期事件注解，用于指定在实体对象更新到数据库之前要执行的方法。当执行更新操作时，例如调用 <code>EntityManager</code> 的 <code>merge</code> 方法更新实体对象时，被标记了 <code>@PreUpdate</code> 注解的方法将在实体对象更新之前被调用</strong></p>
+</blockquote>
+<pre><code class="language-java">import javax.persistence.*;
+
+@Entity
+public class Employee {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+    private String department;
+
+    @PreUpdate
+    public void preUpdate() {
+        // 在实体对象更新到数据库之前调用
+        System.out.println(&quot;PreUpdate: &quot; + name);
+        // 可在这里执行其他逻辑操作
+    }
+}
+</code></pre>
+<h3 id="5-postupdate">5. @PostUpdate</h3>
+<blockquote>
+<p><strong><code>@PostUpdate</code> 是 Java Persistence API (JPA) 的一个生命周期事件注解，用于指定在实体对象更新到数据库之后要执行的方法。当执行更新操作时，例如调用 <code>EntityManager</code> 的 <code>merge</code> 方法更新实体对象后，被标记了 <code>@PostUpdate</code> 注解的方法将在实体对象更新之后被调用</strong></p>
+</blockquote>
+<pre><code class="language-java">import javax.persistence.*;
+
+@Entity
+public class Employee {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+    private String department;
+
+    @PostUpdate
+    public void postUpdate() {
+        // 在实体对象更新到数据库之后调用
+        System.out.println(&quot;PostUpdate: &quot; + name);
+        // 可在这里执行其他逻辑操作
+    }
+}
+</code></pre>
+<h3 id="6-preremove">6. @PreRemove</h3>
+<blockquote>
+<p><strong><code>@PreRemove</code> 是 Java Persistence API (JPA) 的一个生命周期事件注解，用于指定在实体对象从数据库中移除之前要执行的方法。当执行删除操作时，例如调用 <code>EntityManager</code> 的 <code>remove</code> 方法删除实体对象时，被标记了 <code>@PreRemove</code> 注解的方法将在实体对象被移除之前被调用。</strong></p>
+</blockquote>
+<pre><code class="language-java">import javax.persistence.*;
+
+@Entity
+public class Employee {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+    private String department;
+
+    @PreRemove
+    public void preRemove() {
+        // 在实体对象从数据库中移除之前调用
+        System.out.println(&quot;PreRemove: &quot; + name);
+        // 可在这里执行其他逻辑操作
+    }
+}
+</code></pre>
+<h3 id="7-postremove">7. @PostRemove</h3>
+<blockquote>
+<p>** <code>@PostRemove</code> 是 Java Persistence API (JPA) 的一个生命周期事件注解，用于指定在实体对象从数据库中移除之后要执行的方法。当执行删除操作时，例如调用 <code>EntityManager</code> 的 <code>remove</code> 方法删除实体对象后，被标记了 <code>@PostRemove</code> 注解的方法将在实体对象被移除之后被调用。**</p>
+</blockquote>
+<pre><code class="language-java">import javax.persistence.*;
+
+@Entity
+public class Employee {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+    private String department;
+
+    @PostRemove
+    public void postRemove() {
+        // 在实体对象从数据库中移除之后调用
+        System.out.println(&quot;PostRemove: &quot; + name);
+        // 可在这里执行其他逻辑操作
+    }
+
+}
+</code></pre>
+<h3 id="8-postload">8. @PostLoad</h3>
+<blockquote>
+<p><strong><code>@PostLoad</code> 是 Java Persistence API (JPA) 的一个生命周期事件注解，用于指定在实体对象从数据库加载到内存后要执行的方法。当从数据库中检索实体对象时，被标记了 <code>@PostLoad</code> 注解的方法将在实体对象加载到内存后被调用。</strong></p>
+</blockquote>
+<pre><code class="language-java">import javax.persistence.*;
+
+@Entity
+public class Employee {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+    private String department;
+
+    @PostLoad
+    public void postLoad() {
+        // 在实体对象从数据库加载到内存后调用
+        System.out.println(&quot;PostLoad: &quot; + name);
+        // 可在这里执行其他逻辑操作
+    }
+
+}
+</code></pre>
+<h3 id="9-dynamicupdate">9. @DynamicUpdate</h3>
+<blockquote>
+<p><strong><code>@DynamicUpdate</code> 是 Hibernate 框架提供的一个注解，用于指定只更新发生变化的字段到数据库，而忽略未发生变化的字段。它可以应用于实体类上，表示在执行更新操作时，只更新被修改的字段，而不更新所有字段。</strong></p>
+</blockquote>
+<pre><code class="language-java">import javax.persistence.*;
+
+@Entity
+@Table(name = &quot;employees&quot;)
+@DynamicUpdate
+public class Employee {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+    private String department;
+    private double salary;
+}
+</code></pre>
+<p>执行数据操作</p>
+<pre><code class="language-java">public class Main {
+    public static void main(String[] args) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory(&quot;myPersistenceUnit&quot;);
+        EntityManager em = emf.createEntityManager();
+
+        // 创建一个新的 Employee 对象
+        Employee employee = new Employee();
+        employee.setName(&quot;John&quot;);
+        employee.setDepartment(&quot;IT&quot;);
+        employee.setSalary(5000.0);
+
+        // 将对象保存到数据库
+        em.getTransaction().begin();
+        em.persist(employee);
+        em.getTransaction().commit();
+
+        // 更新 Employee 对象的部门和薪水字段
+        em.getTransaction().begin();
+        employee.setDepartment(&quot;HR&quot;);
+        employee.setSalary(6000.0);
+        em.getTransaction().commit();
+
+        em.close();
+        emf.close();
+    }
+}
+</code></pre>
+<p>使用 <code>@DynamicUpdate</code> 注解时生成的更新语句（只更新发生变化的字段）：</p>
+<pre><code class="language-sql">UPDATE employees SET department = 'HR', salary = 6000.0 WHERE id = 1;
+</code></pre>
+<p>未使用 <code>@DynamicUpdate</code> 注解时生成的更新语句（更新所有字段）：</p>
+<pre><code class="language-sql">UPDATE employees SET name = 'John', department = 'HR', salary = 6000.0 WHERE id = 1;
+</code></pre>
+<h3 id="10-dynamicinsert">10. @DynamicInsert</h3>
+<blockquote>
+<p><strong><code>@DynamicInsert</code> 是 Hibernate 框架提供的一个注解，用于指定在执行插入操作时，只插入非空字段到数据库，而忽略空值字段。它可以应用于实体类上，表示在执行插入操作时，只插入非空字段，而不插入空值字段。</strong></p>
+</blockquote>
+<pre><code class="language-java">import javax.persistence.*;
+
+@Entity
+@Table(name = &quot;employees&quot;)
+@DynamicInsert
+public class Employee {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+    private String department;
+    private double salary;
+
+}
+</code></pre>
+<p>执行数据操作</p>
+<pre><code class="language-java">public class Main {
+    public static void main(String[] args) {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory(&quot;myPersistenceUnit&quot;);
+        EntityManager em = emf.createEntityManager();
+
+        // 创建一个新的 Employee 对象
+        Employee employee = new Employee();
+        employee.setName(&quot;John&quot;);
+        employee.setDepartment(&quot;IT&quot;);
+
+        // 将对象保存到数据库
+        em.getTransaction().begin();
+        em.persist(employee);
+        em.getTransaction().commit();
+
+        em.close();
+        emf.close();
+    }
+}
+</code></pre>
+<p>使用 <code>@DynamicInsert</code> 注解时生成的更新语句（只插入非空字段）：</p>
+<pre><code class="language-sql">INSERT INTO employees (name, department) VALUES ('John', 'IT');
+</code></pre>
+<p>未使用 <code>@DynamicInsert</code> 注解时生成的更新语句（插入所有字段）：</p>
+<pre><code class="language-sql">INSERT INTO employees (id, name, department, salary) VALUES (1, 'John', 'IT', 5000.0);
+</code></pre>
+<h2 id="2-projections投影">2. Projections（投影）</h2>
+<blockquote>
+<p><strong><code>Projections</code> 是一种功能，用于选择实体中的特定字段，以创建自定义的投影对象。投影对象是一个接口或类，仅包含您所选择的字段，而不是整个实体的所有字段。</strong></p>
+<p><strong>通过使用投影，您可以在查询结果中返回仅包含所需字段的对象，而不是完整的实体对象。这有助于减少数据传输量和内存消耗，提高性能，并使查询结果更加精确和专注。</strong></p>
+</blockquote>
+<h3 id="接口投影interface-projections">接口投影（Interface Projections）</h3>
+<p><strong>接口投影（Interface Projections）：使用接口来定义投影对象，并在接口中声明所需的字段访问方法。Spring Data JPA 将根据投影接口的定义来映射查询结果，并返回仅包含所需字段的投影对象。</strong></p>
+<pre><code class="language-java">public interface EmployeeProjection {
+    String getName();
+    String getDepartment();
+}
+
+List&lt;EmployeeProjection&gt; findByDepartment(String department);
+</code></pre>
+<h3 id="closed-projections">（Closed Projections）</h3>
+<p><strong>使用自定义的类来定义投影对象，并在类中声明所需的字段和构造方法。通过使用 <code>Projections.constructor</code> 方法，您可以将查询结果映射到自定义的投影类，并选择所需的字段。</strong></p>
+<pre><code class="language-java">public class EmployeeProjection {
+    private String name;
+    private String department;
+
+    public EmployeeProjection(String name, String department) {
+        this.name = name;
+        this.department = department;
+    }
+}
+
+List&lt;EmployeeProjection&gt; findByDepartment(String department);
+</code></pre>
+<h3 id="动态投影-dynamic-projections">动态投影 (Dynamic Projections)</h3>
+<p><strong>您可以通过动态投影实现在运行时选择不同字段的能力。动态投影允许您根据查询需求在运行时选择要返回的字段，而不是在编译时固定选择字段。</strong></p>
+<pre><code class="language-java">public interface PersonRepository extends Repository&lt;Person, Long&gt; {
+    // ...
+
+    &lt;T&gt; T findByLastName(String lastName, Class&lt;T&gt; type);
+}
+
+
+Person person = personRepository.findByLastName(&quot;Doe&quot;, Person.class);
+PersonView personView = personRepository.findByLastName(&quot;Doe&quot;, PersonView.class);
+PersonDto personDto = personRepository.findByLastName(&quot;Doe&quot;, PersonDto.class);
+</code></pre>
+<h3 id="开放式投影open-projections">开放式投影（open projections）</h3>
+<p><strong>开放式投影。 这些投影使我们能够定义具有不匹配名称和在运行时计算的返回值的接口方法。</strong></p>
+<pre><code class="language-java">public interface PersonView {
+    // ...
+
+    @Value(&quot;#{target.firstName + ' ' + target.lastName}&quot;)
+    String getFullName();
+}
+
+  PersonView findByLastName(String lastName);
+</code></pre>
+<h2 id="3-规范specification">3. 规范（Specification）</h2>
+<h3 id="基本使用">基本使用</h3>
+<p><strong>使用 Spring Data JPA 进行复杂查询时，可以使用 Specification（规范）来构建动态查询条件。Specification 可以帮助您以一种类型安全的方式根据运行时条件动态构建查询。</strong></p>
+<pre><code class="language-java">import org.springframework.data.jpa.domain.Specification;
+
+public class EmployeeSpecifications {
+    public static Specification&lt;Employee&gt; hasName(String name) {
+        return (root, query, criteriaBuilder) -&gt; {
+            if (name != null) {
+                return criteriaBuilder.equal(root.get(&quot;name&quot;), name);
+            }
+            return null;
+        };
+    }
+
+    public static Specification&lt;Employee&gt; hasAgeGreaterThan(int age) {
+        return (root, query, criteriaBuilder) -&gt; criteriaBuilder.greaterThan(root.get(&quot;age&quot;), age);
+    }
+
+    public static Specification&lt;Employee&gt; hasDepartment(String department) {
+        return (root, query, criteriaBuilder) -&gt; criteriaBuilder.equal(root.get(&quot;department&quot;), department);
+    }
+
+    // 添加更多的 Specification 方法，以满足您的查询需求
+}
+</code></pre>
+<p>Service</p>
+<pre><code class="language-java">import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+@Service
+@Transactional
+public class EmployeeService {
+    private final EmployeeRepository employeeRepository;
+
+    public EmployeeService(EmployeeRepository employeeRepository) {
+        this.employeeRepository = employeeRepository;
+    }
+
+    public List&lt;Employee&gt; findEmployees(String name, int age, String department) {
+        Specification&lt;Employee&gt; spec = Specification.where(EmployeeSpecifications.hasName(name))
+                .and(EmployeeSpecifications.hasAgeGreaterThan(age))
+                .and(EmployeeSpecifications.hasDepartment(department));
+
+        return employeeRepository.findAll(spec);
+    }
+}
+</code></pre>
+<p>Repository</p>
+<pre><code class="language-java">import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface EmployeeRepository extends JpaRepository&lt;Employee, Long&gt;, JpaSpecificationExecutor&lt;Employee&gt; {
+}
+</code></pre>
+<p>复杂一点的servier</p>
+<pre><code class="language-java">    @Override
+    public Page&lt;EsAlarm&gt; page(EsPageRspVO vo) {
+        Assert.notNull(vo.getProjectId(), ResultCode.NO_PROJECT_ID.getMessage());
+        //条件定义
+        Specification&lt;EsAlarm&gt; specification = (root, query, cb) -&gt; {
+            List&lt;Predicate&gt; predicates = new ArrayList&lt;&gt;();
+
+
+            Predicate deletedPredicate = cb.equal(root.get(EsAlarm.Fields.deleted), Deleted.UN_DELETED.getCode());
+            predicates.add(deletedPredicate);
+
+            Predicate projectPredicate = cb.equal(root.get(EsAlarm.Fields.projectId), vo.getProjectId());
+            predicates.add(projectPredicate);
+
+            if (vo.getProcessingStatus() != null) {
+                Predicate predicate = cb.equal(root.get(EsAlarm.Fields.processingStatus), vo.getProcessingStatus());
+                predicates.add(predicate);
+            }
+
+            if (StrUtil.isNotBlank(vo.getDeviceKeywords())) {
+                Predicate predicate = cb.or(
+                        cb.like(root.get(EsAlarm.Fields.deviceNo).as(String.class), StringConstant.likeString(vo.getDevice())),
+                        cb.like(root.get(EsAlarm.Fields.deviceName).as(String.class), StringConstant.likeString(vo.getDevice()))
+                );
+                predicates.add(predicate);
+            }
+
+            return cb.and(predicates.toArray(new Predicate[0]));
+
+        };
+        Pageable pageable = PageRequest.of(vo.getPageNo() - 1, vo.getPageSize(), vo.getSortOption());
+        //查询
+        return esAlarmRepository.findAll(specification, pageable);
+    }
+</code></pre>
+<h3 id="工具类">工具类</h3>
+<p>基础工具类</p>
+<pre><code class="language-java">
+import cn.hutool.core.collection.CollUtil;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
+
+import javax.persistence.criteria.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+/**
+ *
+ * @author yz
+ * @date 2024/03/15
+ */
+
+public class JpaSpecification&lt;T&gt; {
+
+    private final List&lt;Specification&lt;T&gt;&gt; specifications;
+    private Sort sort;
+
+    public JpaSpecification() {
+        specifications = new ArrayList&lt;&gt;();
+    }
+
+    public static &lt;T&gt; JpaSpecification&lt;T&gt; getInstance() {
+        return new JpaSpecification&lt;&gt;();
+    }
+
+    public JpaSpecification&lt;T&gt; addSpecification(Specification&lt;T&gt; specification) {
+        if (specification != null) {
+            specifications.add(specification);
+        }
+
+        return this;
+    }
+
+    public JpaSpecification&lt;T&gt; withSort(Sort sort) {
+        this.sort = sort;
+        return this;
+    }
+
+
+    public Specification&lt;T&gt; build() {
+        return (Root&lt;T&gt; root, CriteriaQuery&lt;?&gt; query, CriteriaBuilder criteriaBuilder) -&gt; {
+            Predicate[] predicates = specifications.stream()
+                    .map(spec -&gt; spec.toPredicate(root, query, criteriaBuilder))
+                    .toArray(Predicate[]::new);
+
+            query.where(predicates);
+
+            if (sort != null) {
+                query.orderBy(sort.stream()
+                        .map(order -&gt; {
+                            String property = order.getProperty();
+                            Expression&lt;String&gt; orderExpr = root.get(property);
+                            if (order.isIgnoreCase()) {
+                                orderExpr = criteriaBuilder.lower(orderExpr);
+                            }
+                            return order.isAscending() ? criteriaBuilder.asc(orderExpr) : criteriaBuilder.desc(orderExpr);
+                        })
+                        .toArray(javax.persistence.criteria.Order[]::new));
+            }
+
+            return criteriaBuilder.and(predicates);
+        };
+    }
+
+    public static &lt;T&gt; Specification&lt;T&gt; hasCreateTime(List&lt;Date&gt; queryTime) {
+        if (CollUtil.isEmpty(queryTime)) {
+            return null;
+        }
+        return (root, query, criteriaBuilder) -&gt; criteriaBuilder.between(root.get(&quot;createTime&quot;), queryTime.get(0), queryTime.get(1));
+    }
+
+
+    public static &lt;T&gt; Specification&lt;T&gt; hasDelete() {
+        return (root, query, criteriaBuilder) -&gt; criteriaBuilder.equal(root.get(&quot;deleted&quot;), 0);
+    }
+
+    public static &lt;T&gt; Specification&lt;T&gt; hasDeviceId(Integer deviceId) {
+        if (deviceId == null) {
+            return null;
+        }
+        return (root, query, criteriaBuilder) -&gt; criteriaBuilder.equal(root.get(&quot;deviceId&quot;), deviceId);
+    }
+
+    public static &lt;T&gt; Specification&lt;T&gt; hasProjectId(Integer projectId) {
+        return (root, query, criteriaBuilder) -&gt; criteriaBuilder.equal(root.get(&quot;projectId&quot;), projectId);
+    }
+}
+</code></pre>
+<p>模块通用工具类</p>
+<pre><code class="language-java">
+public class ElevatorSpecification&lt;T&gt; {
+
+    private final JpaSpecification&lt;T&gt; jpaSpecifications;
+
+
+    public ElevatorSpecification() {
+        jpaSpecifications = new JpaSpecification&lt;&gt;();
+    }
+
+    public static &lt;T&gt; ElevatorSpecification&lt;T&gt; getInstance() {
+        return new ElevatorSpecification&lt;&gt;();
+    }
+
+    public static Specification&lt;AirConditionerRecord&gt; hasAirOperationType(String code) {
+        if (StrUtil.isNotBlank(code)) {
+            return null;
+        }
+        return (root, query, criteriaBuilder) -&gt; criteriaBuilder.equal(root.get(AirConditionerRecord.Fields.operationType), code);
+    }
+
+    public ElevatorSpecification&lt;T&gt; withSort(Sort sort) {
+        jpaSpecifications.withSort(sort);
+        return this;
+    }
+
+    public ElevatorSpecification&lt;T&gt; addSpecification(Specification&lt;T&gt; specification) {
+        jpaSpecifications.addSpecification(specification);
+        return this;
+    }
+
+    public Specification&lt;T&gt; build() {
+        return jpaSpecifications.build();
+    }
+
+    public static &lt;T&gt; Specification&lt;T&gt; hasAirStatus(Integer value) {
+        return (root, query, criteriaBuilder) -&gt; criteriaBuilder.equal(root.get(AirConditionerRecord.Fields.status), value);
+    }
+
+
+}
+
+</code></pre>
+<p>使用方法</p>
+<pre><code class="language-java">    default Optional&lt;AirConditionerRecord&gt; findLastSwitchRecord(Integer deviceId, Integer value, Integer projectId) {
+        Specification&lt;AirConditionerRecord&gt; spec = ElevatorSpecification.&lt;AirConditionerRecord&gt;getInstance()
+                .addSpecification(JpaSpecification.hasDelete())
+                .addSpecification(JpaSpecification.hasProjectId(projectId))
+                .addSpecification(JpaSpecification.hasDeviceId(deviceId))
+                .addSpecification(ElevatorSpecification.hasAirOperationType(AirConditionerOperationTypeEnums.SWITCH.code))
+                .addSpecification(ElevatorSpecification.hasAirStatus(value))
+                .withSort(Sort.by(Sort.Direction.DESC, AirConditionerRecord.Fields.id))
+                .build();
+        return findOne(spec);
+    }
+
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[ oh-my-zsh 安装]]></title>
+        <id>https://yz0812.github.io/post/oh-my-zsh-an-zhuang/</id>
+        <link href="https://yz0812.github.io/post/oh-my-zsh-an-zhuang/">
+        </link>
+        <updated>2023-09-19T20:52:17.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="oh-my-zsh-安装">oh-my-zsh 安装</h2>
+<h3 id="1安装-zsh">1.安装 zsh</h3>
+<p><code>linux</code> 下：</p>
+<pre><code class="language-shell"> yum install zsh
+</code></pre>
+<p><code>mac</code>下：</p>
+<pre><code class="language-shell">brew install zsh
+</code></pre>
+<h3 id="2安装-oh-my-zsh">2.安装 oh-my-zsh</h3>
+<pre><code class="language-shell"># 这里需要下载的是https://github.com/ohmyzsh/ohmyzsh ,但是github因为某些原因下不来,所以后面都使用gitee
+wget https://gitee.com/mirrors/oh-my-zsh/raw/master/tools/install.sh
+# 然后给install.sh添加权限：
+chmod +x install.sh
+</code></pre>
+<p>编辑 install.sh</p>
+<pre><code class="language-shell">vim install.sh
+</code></pre>
+<p>找到以下部分修改：</p>
+<pre><code class="language-sh"># Default settings
+REPO=${REPO:-ohmyzsh/ohmyzsh}
+REMOTE=${REMOTE:-https://github.com/${REPO}.git}
+BRANCH=${BRANCH:-master}
+# 修改其中的github为gitee,还有-ohmyzsh/ohmyzsh修改为-mirrors/oh-my-zsh
+REPO=${REPO:-mirrors/oh-my-zsh}
+REMOTE=${REMOTE:-https://gitee.com/${REPO}.git}
+</code></pre>
+<p>然后执行<code> ./install.sh</code></p>
+<h3 id="3配置-zsh">3.配置 zsh</h3>
+<pre><code class="language-shell">vim ~/.zshrc
+</code></pre>
+<p>修改主题：</p>
+<pre><code class="language-sh">ZSH_THEME=&quot;robbyrussell&quot;
+# 改为
+ZSH_THEME=&quot;ys&quot;
+</code></pre>
+<p>修改插件：</p>
+<pre><code class="language-sh">plugins=(git)
+# 改为
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
+</code></pre>
+<h3 id="4-下载插件">4. 下载插件</h3>
+<pre><code class="language-shell">git clone https://gitee.com/fast-mirrors/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+
+git clone https://gitee.com/fast-mirrors/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+</code></pre>
+<h3 id="5刷新">5.刷新</h3>
+<pre><code class="language-shell">source ~/.bash_profile
+source ~/.zshrc
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[ 经纬度计算距离]]></title>
+        <id>https://yz0812.github.io/post/jing-wei-du-ji-suan-ju-chi/</id>
+        <link href="https://yz0812.github.io/post/jing-wei-du-ji-suan-ju-chi/">
+        </link>
+        <updated>2023-09-14T16:11:51.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="经纬度计算距离">经纬度计算距离</h2>
+<h3 id="1导入maven依赖">1.导入maven依赖</h3>
+<p><code>org.gavaghan</code> 是一个 Java 软件包，由 Tim Gavaghan 创建和维护。该软件包提供了一系列用于处理和解析各种数据格式的类和工具。</p>
+<pre><code class="language-xml">     &lt;dependency&gt;
+          &lt;groupId&gt;org.gavaghan&lt;/groupId&gt;
+          &lt;artifactId&gt;geodesy&lt;/artifactId&gt;
+          &lt;version&gt;${geodesy.version}&lt;/version&gt;
+     &lt;/dependency&gt;
+</code></pre>
+<h3 id="2代码实现">2.代码实现</h3>
+<pre><code class="language-java">
+  GlobalCoordinates start = globalCoordinatesList.get(i);
+            GlobalCoordinates end = globalCoordinatesList.get(i + 1);
+
+
+    private static BigDecimal getDistanceMeter(GlobalCoordinates gpsFrom, GlobalCoordinates gpsTo) {
+        //创建GeodeticCalculator，调用计算方法，传入坐标系、经纬度用于计算距离
+        GeodeticCurve geoCurve = new GeodeticCalculator().calculateGeodeticCurve(Ellipsoid.Sphere, gpsFrom, gpsTo);
+        return BigDecimal.valueOf(geoCurve.getEllipsoidalDistance());
+    }
+
+</code></pre>
+]]></content>
+    </entry>
+</feed>
